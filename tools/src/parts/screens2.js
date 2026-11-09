@@ -61,6 +61,7 @@ document.addEventListener('click', ev => {
     case 'wrun': warmRun(+d.step); break;
     case 'wnext': go('warmup', { step:+d.step + 1 }); break;
     case 'rstart': go('range', { phase:'low' }); break;
+    case 'rmark': if (RG) RG.mark = true; break;
     case 'tsay': { const t = THEORY[+d.i]; say(L(t.k) + '. ' + L(t.d), true); break; }
     case 'tplay': { stopSpeech(); const my = ++run; playEvents(THEORY[+d.i].demo, my, null); break; }
     case 'prevVoice': say(tr('sPreviewText'), true); break;
@@ -78,7 +79,7 @@ document.addEventListener('keydown', ev => {
 });
 
 /* ---------- every phrase the app can speak (used to record the voice) ---------- */
-const SPOKEN_TXT = ['listen', 'singNow', 'yourTurn', 'correct', 'notQuite', 'selectAll', 'coachMic', 'coachLow', 'coachHigh', 'coachSteady', 'coachHold', 'beat1', 'beat2', 'beat3', 'passedSay', 'failSay2', 'instrSing', 'instrEcho', 'instrMC', 'instrEar', 'instrTap', 'instrHarm', 'testIntro', 'tapOff', 'wDone', 'qName', 'qVoice', 'qRead', 'rLow', 'rHigh', 'rSaved', 'sPreviewText', 'wBreatheT', 'wBreatheB', 'wHumT', 'wHumB', 'wSirenT', 'wSirenB', 'wScaleT', 'wScaleB'];
+const SPOKEN_TXT = ['listen', 'singNow', 'yourTurn', 'correct', 'notQuite', 'selectAll', 'coachMic', 'coachLow', 'coachHigh', 'coachSteady', 'coachHold', 'beat1', 'beat2', 'beat3', 'passedSay', 'failSay2', 'instrSing', 'instrEcho', 'instrMC', 'instrEar', 'instrTap', 'instrHarm', 'testIntro', 'tapOff', 'wDone', 'qName', 'qVoice', 'qRead', 'rAdult', 'rResultSay', 'rNotExact', 'rRetryNote', 'rFail', 'rSaved', 'sPreviewText', 'wBreatheT', 'wBreatheB', 'wHumT', 'wHumB', 'wSirenT', 'wSirenB', 'wScaleT', 'wScaleB'];
 function allSpeech() {
   const out = [], seen = new Set(), keep = S.lang;
   const add = (pack, text) => { const t = cleanSpeech(text); if (!t) return; const k = S.lang + '|' + t; if (seen.has(k)) return; seen.add(k); out.push({ lang:S.lang, pack:S.lang + '_' + pack, text:t, key:clipKey(S.lang, t) }); };
@@ -86,6 +87,8 @@ function allSpeech() {
     S.lang = lang;
     SPOKEN_TXT.forEach(k => add('ui', tr(k)));
     add('ui', tr('rTitle') + '. ' + tr('rIntro'));
+    for (let i = 1; i <= 4; i++) add('ui', tr('rStage' + i + 'T') + '. ' + tr('rStage' + i));
+    Object.values(VT).forEach(v => add('ui', L(v.d)));
     ['wBreatheT', 'wHumT', 'wSirenT', 'wScaleT'].forEach(k => add('ui', tr(k) + '. ' + tr(k.slice(0, -1) + 'B')));
     TOUR.forEach(s => add('ui', L(s.t) + '. ' + L(s.d)));
     THEORY.forEach(g => add('ui', L(g.k) + '. ' + L(g.d)));

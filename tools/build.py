@@ -26,6 +26,8 @@ base = base[:i] + R('parts/screens.js') + '\n' + base[j:]
 i = base.index('SCREENS.progress = () => {')
 j = base.index('</script>', i)
 base = base[:i] + R('parts/screens2.js').replace('async function hearNothing() {}\n', '') + '\n' + base[j:]
+i, j = between(base, '/* range finder */', 'SCREENS.theory = () => {')
+base = base[:i] + R('parts/range.js') + base[j:]
 # 6 misc
 base = base.replace("intro:'levels',", "intro:'levels', lesson:'levels',")
 base = base.replace("<p class=\"center\">${tr('rSaved', { n:nnOct(root) })}</p>", "<p class=\"center\">${tr('rSaved')} <b>${nnOct(root)}</b></p>")

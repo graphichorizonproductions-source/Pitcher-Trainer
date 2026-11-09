@@ -53,3 +53,33 @@ Object.assign(TXT.es, {
   tIntro:'Explicaciones en palabras sencillas. Toca una palabra para abrirla.', glossHear:'Escúchalo',
   earHear:'Escucha las notas…', tapHint:'Toca en las cajitas encendidas', ready:'¿Listo?', kindSing:'Canto', kindEar:'Oído', kindQuiz:'Preguntas', kindTap:'Ritmo'
 });
+
+Object.assign(TXT.en, {
+  rTitle:'Find My Range and Voice Type', rBegin:'Start the test', rRetry:'Test again', tileRangeSub:'Find your sweet spot and voice type',
+  rIntro:'This takes about five minutes. You will find four notes: your lowest note, your highest note, and the two edges of your sweet spot, called your prima voce. Then the app tells you your voice type. Sing on a relaxed ah, and never strain.',
+  rAdult:'This test is for adult voices that have finished changing. If you are sixteen or younger, or your voice is still changing, use the range only as a rough guide and skip the voice type.',
+  rStage1T:'Step 1 of 4. Your lowest note', rStage1:'We start in the middle and go down one tiny step at a time. Listen to each note, then sing it on ah, in whatever octave is comfortable. Keep going down until you cannot make a clear sound. When you cannot match the next note, tap the button.',
+  rStage2T:'Step 2 of 4. Your highest note', rStage2:'Now we go up one tiny step at a time. Sing each note, and let your voice flip into a light, airy falsetto if it wants to. Keep going until you cannot make a clear sound, then tap the button.',
+  rStage3T:'Step 3 of 4. Where your sweet spot starts', rStage3:'Now we find the low edge of your sweet spot. We start high and come down. The notes feel easy at first. When your voice starts to work a bit harder to make the sound, tap the button. Listen with your body, not only your ears.',
+  rStage4T:'Step 4 of 4. Where your sweet spot ends', rStage4:'Last one. We start low and go up. When your voice starts to work harder, with more effort or squeeze, tap the button.',
+  rBtnLow:'This is my lowest note', rBtnHigh:'This is my highest note', rBtnWork:'My voice is working harder here',
+  rPlaying:'Listen…', rSingAlong:'Sing along on ah', rGotNote:'Got it!', rRetryNote:'I did not catch that. Try that note again.', rFail:'I could not find a steady note. Sing a little louder on ah, then start this step again.',
+  rDoneT:'Your voice map', rRangeLab:'Your range', rSweetLab:'Your sweet spot (prima voce)', rNotes:'notes',
+  rResultSay:'Here is your voice map. The blue bar is your whole range. The gold bar is your sweet spot, your prima voce. These notes are where you sound and feel your best, so your exercises will start there.',
+  rNotExact:'This is not an exact science. Every voice is unique, and your voice type can change with training, with age, and even from day to day. Come back and test again in a few weeks.'
+});
+
+Object.assign(TXT.es, {
+  rTitle:'Mi rango y tipo de voz', rBegin:'Empezar la prueba', rRetry:'Repetir la prueba', tileRangeSub:'Encuentra tu punto ideal y tu tipo de voz',
+  rIntro:'Esto toma unos cinco minutos. Vas a encontrar cuatro notas: tu nota más grave, tu nota más aguda, y los dos bordes de tu punto ideal, llamado tu prima voce. Luego la app te dice tu tipo de voz. Canta con una a relajada, y nunca te esfuerces.',
+  rAdult:'Esta prueba es para voces adultas que ya terminaron de cambiar. Si tienes dieciséis años o menos, o tu voz todavía está cambiando, usa el rango solo como una guía aproximada y omite el tipo de voz.',
+  rStage1T:'Paso 1 de 4. Tu nota más grave', rStage1:'Empezamos en el medio y bajamos un pasito a la vez. Escucha cada nota y luego cántala con a, en la octava que te sea cómoda. Sigue bajando hasta que no puedas hacer un sonido claro. Cuando no puedas igualar la siguiente nota, toca el botón.',
+  rStage2T:'Paso 2 de 4. Tu nota más aguda', rStage2:'Ahora subimos un pasito a la vez. Canta cada nota, y deja que tu voz pase a un falsete ligero si quiere. Sigue hasta que no puedas hacer un sonido claro, y luego toca el botón.',
+  rStage3T:'Paso 3 de 4. Dónde empieza tu punto ideal', rStage3:'Ahora encontramos el borde grave de tu punto ideal. Empezamos arriba y bajamos. Las notas se sienten fáciles al principio. Cuando tu voz empiece a trabajar un poco más para hacer el sonido, toca el botón. Escucha con tu cuerpo, no solo con tus oídos.',
+  rStage4T:'Paso 4 de 4. Dónde termina tu punto ideal', rStage4:'La última. Empezamos abajo y subimos. Cuando tu voz empiece a trabajar más, con más esfuerzo o presión, toca el botón.',
+  rBtnLow:'Esta es mi nota más grave', rBtnHigh:'Esta es mi nota más aguda', rBtnWork:'Mi voz trabaja más aquí',
+  rPlaying:'Escucha…', rSingAlong:'Canta con a', rGotNote:'¡Listo!', rRetryNote:'No te escuché. Intenta esa nota otra vez.', rFail:'No pude encontrar una nota firme. Canta un poco más fuerte con a, y empieza este paso otra vez.',
+  rDoneT:'El mapa de tu voz', rRangeLab:'Tu rango', rSweetLab:'Tu punto ideal (prima voce)', rNotes:'notas',
+  rResultSay:'Aquí está el mapa de tu voz. La barra azul es todo tu rango. La barra dorada es tu punto ideal, tu prima voce. Estas notas son donde mejor suenas y te sientes, así que tus ejercicios empezarán ahí.',
+  rNotExact:'Esto no es una ciencia exacta. Cada voz es única, y tu tipo de voz puede cambiar con el entrenamiento, con la edad e incluso de un día a otro. Vuelve a hacer la prueba en unas semanas.'
+});

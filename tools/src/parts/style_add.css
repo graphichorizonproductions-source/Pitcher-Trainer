@@ -48,3 +48,6 @@
 .tapbtn{display:block;margin:6px auto;width:150px;height:150px;border-radius:50%;border:0;background:var(--grad);color:#fff;font:800 26px 'Sora',sans-serif;box-shadow:0 12px 36px rgba(92,110,255,.5);cursor:pointer;touch-action:manipulation;transition:transform .08s}
 .tapbtn:disabled{opacity:.4;box-shadow:none}.tapbtn.hit{transform:scale(.92);background:linear-gradient(135deg,#2ee6a6,#13b886)}
 .stage .btn.small{margin:8px auto 0;display:flex}
+.rbar{position:relative;height:26px;border-radius:13px;background:rgba(255,255,255,.07);margin:16px 0 12px;overflow:hidden}
+.rbar i{position:absolute;top:0;bottom:0;border-radius:13px}.rbar .rr{background:linear-gradient(90deg,#3fa9ff,#7c5cff);opacity:.75}.rbar .rs{background:linear-gradient(90deg,#ffc857,#ffb938);top:5px;bottom:5px}
+.dotb,.dotg{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;background:#6a80ff}.dotg{background:#ffc857}
