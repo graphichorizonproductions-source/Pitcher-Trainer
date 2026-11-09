@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080a1a">
+<title>Worship Team Pitch Trainer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+:root{--ink:#080a1a;--glass:rgba(255,255,255,.055);--glass2:rgba(255,255,255,.095);--line:rgba(255,255,255,.12);--text:#f3f5ff;--muted:#9aa3d0;--violet:#7c5cff;--blue:#3fa9ff;--gold:#ffc857;--green:#2ee6a6;--red:#ff5d73;--yel:#ffd166;--grad:linear-gradient(135deg,#7c5cff 0%,#3fa9ff 100%);--radius:22px}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--ink);color:var(--text);min-height:100vh;font-size:16px;line-height:1.5;overflow-x:hidden}
+body::before,body::after{content:'';position:fixed;z-index:-1;border-radius:50%;filter:blur(90px);opacity:.5;pointer-events:none}
+body::before{width:540px;height:540px;background:#5436e0;top:-180px;left:-140px;animation:drift 19s ease-in-out infinite alternate}
+body::after{width:500px;height:500px;background:#0b78cf;bottom:-190px;right:-150px;animation:drift 23s ease-in-out -9s infinite alternate}
+@keyframes drift{to{transform:translate(90px,70px) scale(1.18)}}
+.wrap{max-width:560px;margin:0 auto;padding:14px 16px 118px;position:relative}
+.ic{width:20px;height:20px;display:inline-block;vertical-align:middle;flex:none}
+h1,h2,h3{font-family:'Sora','Inter',sans-serif;letter-spacing:-.3px}
+h1{font-size:32px;line-height:1.15}
+h2{font-size:26px;line-height:1.2;margin:2px 0 8px}
+h3{font-size:17px;margin-bottom:8px}
+p{margin:6px 0}
+.muted{color:var(--muted);font-size:15px}
+.eyebrow{color:var(--muted);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:1.4px}
+.alt{color:var(--muted);font-weight:500}
+.hidden{display:none!important}
+
+/* header */
+.top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:14px;animation:rise .6s both}
+.brand{display:flex;align-items:center;gap:10px;font:700 17px 'Sora',sans-serif;letter-spacing:-.2px;min-width:0}
+.mark{width:36px;height:36px;border-radius:12px;background:var(--grad);display:grid;place-items:center;box-shadow:0 6px 22px rgba(124,92,255,.5);flex:none}
+.mark .ic{width:19px;height:19px;color:#fff}
+.tools{display:flex;align-items:center;gap:7px}
+.icbtn{width:38px;height:38px;border-radius:12px;background:var(--glass);border:1px solid var(--line);color:var(--text);display:grid;place-items:center;cursor:pointer;transition:.2s;flex:none}
+.icbtn:hover{background:var(--glass2);transform:translateY(-1px)}
+.icbtn .ic{width:18px;height:18px}
+.icbtn.off{color:var(--muted)}
+body.speaking #voiceBtn{background:rgba(124,92,255,.35);border-color:var(--violet);animation:glow 1.1s ease-in-out infinite}
+@keyframes glow{50%{box-shadow:0 0 0 7px rgba(124,92,255,.18)}}
+.lang{display:flex;background:var(--glass);border:1px solid var(--line);border-radius:12px;padding:3px}
+.lang button{border:0;background:transparent;color:var(--muted);font:700 12px 'Inter',sans-serif;padding:7px 10px;border-radius:9px;cursor:pointer;transition:.25s}
+.lang button.on{background:var(--grad);color:#fff;box-shadow:0 4px 14px rgba(124,92,255,.4)}
+
+/* entrance animation */
+@keyframes rise{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:none}}
+#view>*{animation:rise .6s cubic-bezier(.2,.8,.2,1) both}
+#view>*:nth-child(2){animation-delay:.05s}#view>*:nth-child(3){animation-delay:.1s}#view>*:nth-child(4){animation-delay:.15s}#view>*:nth-child(5){animation-delay:.2s}#view>*:nth-child(6){animation-delay:.25s}#view>*:nth-child(7){animation-delay:.3s}#view>*:nth-child(8){animation-delay:.35s}#view>*:nth-child(9){animation-delay:.4s}#view>*:nth-child(10){animation-delay:.45s}#view>*:nth-child(11){animation-delay:.5s}#view>*:nth-child(12){animation-delay:.55s}
+.grid>*{animation:rise .6s cubic-bezier(.2,.8,.2,1) both}
+.grid>*:nth-child(2){animation-delay:.1s}.grid>*:nth-child(3){animation-delay:.18s}.grid>*:nth-child(4){animation-delay:.26s}
+
+/* surfaces */
+.card{background:var(--glass);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin:14px 0;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 10px 40px rgba(0,0,0,.28)}
+.hero{background:linear-gradient(150deg,rgba(124,92,255,.24),rgba(63,169,255,.08));border-color:rgba(124,92,255,.38)}
+.pill{display:inline-block;padding:5px 12px;border-radius:999px;background:rgba(124,92,255,.25);border:1px solid rgba(124,92,255,.5);font:700 12px 'Inter';letter-spacing:1px;text-transform:uppercase}
+
+/* buttons */
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--glass2);color:var(--text);border:1px solid var(--line);border-radius:16px;padding:14px 20px;font:700 16px 'Inter',sans-serif;cursor:pointer;transition:transform .2s,box-shadow .25s,background .25s}
+.btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.14)}
+.btn:active{transform:scale(.97)}
+.btn .ic{width:18px;height:18px}
+.btn.primary{background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 10px 28px rgba(92,110,255,.45)}
+.btn.primary::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.34) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s}
+.btn.primary:hover::after{transform:translateX(120%)}
+.btn.gold{background:linear-gradient(135deg,#ffc857,#ff9f43);color:#2a1a00;border-color:transparent;box-shadow:0 10px 28px rgba(255,167,67,.32)}
+.btn.ghost{background:transparent;border-color:transparent;color:var(--muted)}
+.btn.small{padding:9px 14px;font-size:14px;border-radius:13px}
+.btn.big{width:100%;padding:17px;font-size:17px;margin-top:12px}
+.btn[disabled]{opacity:.38;cursor:not-allowed;transform:none;box-shadow:none}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.row .btn{flex:1}
+.opt{display:block;width:100%;text-align:left;background:var(--glass2);border:1px solid var(--line);border-radius:18px;padding:16px 18px;color:var(--text);font:inherit;cursor:pointer;margin:11px 0;transition:.25s}
+.opt b{display:block;font:700 18px 'Sora',sans-serif}
+.opt small{color:var(--muted);font-size:14px}
+.opt:hover{transform:translateY(-2px);border-color:var(--violet);background:rgba(124,92,255,.17)}
+.opt.on{border-color:var(--violet);background:rgba(124,92,255,.24)}
+input[type=text]{width:100%;padding:15px 16px;border-radius:15px;border:1px solid var(--line);background:rgba(0,0,0,.28);color:var(--text);font:600 18px 'Inter',sans-serif;margin:10px 0;outline:none;transition:.25s}
+input[type=text]:focus{border-color:var(--violet);box-shadow:0 0 0 4px rgba(124,92,255,.22)}
+
+/* tab bar */
+.tabs{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);width:min(520px,calc(100% - 24px));display:flex;justify-content:space-around;background:rgba(18,22,54,.74);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border:1px solid var(--line);border-radius:24px;padding:7px;box-shadow:0 14px 44px rgba(0,0,0,.5);z-index:20;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .3s}
+.tabs.hide{transform:translate(-50%,150%);opacity:0;pointer-events:none}
+.tabs button{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;background:transparent;border:0;color:var(--muted);font:600 11px 'Inter',sans-serif;padding:8px 2px;border-radius:17px;cursor:pointer;transition:.3s}
+.tabs button .ic{width:21px;height:21px;transition:transform .3s}
+.tabs button.on{color:#fff;background:rgba(124,92,255,.3)}
+.tabs button.on .ic{transform:translateY(-2px) scale(1.12);color:#8fc9ff}
+
+/* home */
+.greet{display:flex;justify-content:space-between;align-items:center;gap:14px;margin:6px 0 4px}
+.ringbox{position:relative;width:84px;height:84px;flex:none}
+.ringbox svg{width:84px;height:84px;transform:rotate(-90deg)}
+.rg-bg{fill:none;stroke:rgba(255,255,255,.1);stroke-width:7}
+.rg-fg{fill:none;stroke:#6aa8ff;stroke-width:7;stroke-linecap:round;stroke-dasharray:213.6;stroke-dashoffset:213.6;transition:stroke-dashoffset 1.5s cubic-bezier(.2,.8,.2,1) .3s;filter:drop-shadow(0 0 6px rgba(106,168,255,.6))}
+.ringbox b{position:absolute;inset:0;display:grid;place-items:center;font:700 16px 'Sora',sans-serif}
+.cont{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;margin:14px 0;padding:20px 22px;border:0;border-radius:24px;background:var(--grad);color:#fff;text-align:left;cursor:pointer;box-shadow:0 16px 44px rgba(92,110,255,.5);position:relative;overflow:hidden;font:inherit;transition:transform .25s}
+.cont:hover{transform:translateY(-3px)}
+.cont::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.28) 50%,transparent 65%);transform:translateX(-130%);animation:sheen 4.5s ease-in-out 1s infinite}
+@keyframes sheen{40%,100%{transform:translateX(130%)}}
+.cont small{display:block;font:700 12px 'Inter';text-transform:uppercase;letter-spacing:1.4px;opacity:.85}
+.cont b{display:block;font:700 21px 'Sora',sans-serif;margin-top:2px}
+.cont .ic{width:28px;height:28px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.tile{background:var(--glass);border:1px solid var(--line);border-radius:22px;padding:18px 14px;text-align:left;cursor:pointer;color:var(--text);font:700 15px 'Inter',sans-serif;backdrop-filter:blur(12px);transition:.25s}
+.tile:hover{transform:translateY(-4px);border-color:rgba(124,92,255,.55);background:var(--glass2)}
+.tile .chip-ic{width:44px;height:44px;border-radius:14px;background:var(--grad);display:grid;place-items:center;margin-bottom:12px;box-shadow:0 8px 22px rgba(92,110,255,.4);transition:transform .3s}
+.tile:hover .chip-ic{transform:rotate(-8deg) scale(1.08)}
+.tile .chip-ic .ic{width:22px;height:22px;color:#fff}
+.tile small{display:block;font-weight:500;color:var(--muted);font-size:12.5px;margin-top:2px;line-height:1.35}
+
+/* levels */
+.lv{display:flex;align-items:center;gap:14px;background:var(--glass);border:1px solid var(--line);border-radius:20px;padding:14px 16px;margin:10px 0;width:100%;color:var(--text);font:inherit;text-align:left;cursor:pointer;transition:transform .25s,background .25s,border-color .25s;backdrop-filter:blur(12px)}
+.lv:hover{transform:translateX(5px);background:var(--glass2);border-color:rgba(124,92,255,.5)}
+.lv.locked{opacity:.42;cursor:not-allowed}.lv.locked:hover{transform:none;background:var(--glass);border-color:var(--line)}
+.lv .num{width:46px;height:46px;border-radius:15px;background:var(--grad);display:grid;place-items:center;font:700 19px 'Sora',sans-serif;flex:none;color:#fff;box-shadow:0 6px 18px rgba(92,110,255,.42)}
+.lv.locked .num{background:rgba(255,255,255,.08);box-shadow:none;color:var(--muted)}
+.lv.passed .num{background:linear-gradient(135deg,#2ee6a6,#13b886);box-shadow:0 6px 18px rgba(46,230,166,.35)}
+.lv .nm{flex:1;font-weight:700;min-width:0}
+.lv .nm small{display:block;font-weight:500;color:var(--muted);font-size:13px}
+.stars-row{display:inline-flex;gap:3px}
+.star{width:18px;height:18px;fill:transparent;stroke:#5a6296;stroke-width:2;stroke-linejoin:round}
+.star.on{fill:var(--gold);stroke:var(--gold);animation:pop .65s cubic-bezier(.3,1.7,.5,1) both;filter:drop-shadow(0 0 6px rgba(255,200,87,.6))}
+.stars-row.lg .star{width:44px;height:44px}
+@keyframes pop{from{transform:scale(0) rotate(-40deg);opacity:0}to{transform:none;opacity:1}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{background:rgba(255,255,255,.09);border-radius:12px;padding:6px 13px;font-weight:700;border:1px solid transparent;transition:.25s}
+.chip.on{border-color:var(--gold);color:var(--gold);transform:translateY(-3px);background:rgba(255,200,87,.12)}
+.how{display:flex;flex-direction:column;gap:14px}
+.how .st{display:flex;gap:14px;align-items:flex-start}
+.how .st i{flex:none;width:30px;height:30px;border-radius:10px;background:var(--grad);display:grid;place-items:center;font:700 14px 'Sora',sans-serif;font-style:normal}
+.how .st span{padding-top:3px}
+
+/* run screens */
+.runhead{display:flex;align-items:center;gap:10px;justify-content:space-between}
+.badge{display:inline-block;padding:5px 13px;border-radius:999px;font:700 12px 'Inter';text-transform:uppercase;letter-spacing:1.2px}
+.badge.practice{background:rgba(63,169,255,.25);border:1px solid rgba(63,169,255,.6);color:#a9d8ff}
+.badge.test{background:rgba(255,93,115,.22);border:1px solid rgba(255,93,115,.6);color:#ffb3be}
+.lvname{font-weight:600;color:var(--muted);font-size:14px;text-align:right;flex:1}
+.instr{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:#d7dcff;padding:14px 16px}
+.stage{text-align:center;transition:background .3s;position:relative}
+.status{font:700 18px 'Sora',sans-serif;min-height:28px;color:var(--gold)}
+.orb{position:relative;width:176px;height:176px;margin:10px auto 6px;display:grid;place-items:center}
+.orb::before,.orb::after{content:'';position:absolute;inset:6px;border-radius:50%;border:2px solid rgba(124,92,255,.6);opacity:0}
+.core{width:128px;height:128px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#a590ff,#4b34c9 72%);box-shadow:0 0 44px rgba(124,92,255,.55),inset 0 -8px 24px rgba(0,0,0,.25);display:grid;place-items:center;font:700 40px 'Sora',sans-serif;transition:background .4s,box-shadow .4s;position:relative;z-index:1}
+.core .ic{width:52px;height:52px}
+.stage.hear .orb::before{animation:ringout 1.9s ease-out infinite}
+.stage.hear .orb::after{animation:ringout 1.9s ease-out .95s infinite}
+.stage.sing .core{background:radial-gradient(circle at 30% 25%,#66f3c5,#0f9a76 72%);box-shadow:0 0 56px rgba(46,230,166,.55),inset 0 -8px 24px rgba(0,0,0,.22);animation:breathe 1.5s ease-in-out infinite}
+.stage.sing .orb::before{border-color:rgba(46,230,166,.7);animation:ringout 1.3s ease-out infinite}
+.stage.sing .orb::after{border-color:rgba(46,230,166,.7);animation:ringout 1.3s ease-out .65s infinite}
+@keyframes ringout{from{transform:scale(.72);opacity:.95}to{transform:scale(1.4);opacity:0}}
+@keyframes breathe{50%{transform:scale(1.06)}}
+.dots{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:8px 0 2px}
+.dots i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.18);transition:.35s}
+.dots i.on{background:var(--gold);transform:scale(1.5);box-shadow:0 0 12px var(--gold)}
+.meter{position:relative;height:60px;border-radius:30px;background:rgba(0,0,0,.35);border:1px solid var(--line);margin:16px 0 6px;overflow:hidden;box-shadow:inset 0 2px 12px rgba(0,0,0,.4)}
+.meter::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 calc(10% - 1px),rgba(255,255,255,.07) calc(10% - 1px) 10%)}
+.zone{position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);background:linear-gradient(180deg,rgba(46,230,166,.28),rgba(46,230,166,.12));border-left:2px solid rgba(46,230,166,.7);border-right:2px solid rgba(46,230,166,.7);transition:width .3s}
+.dot{position:absolute;top:50%;left:50%;width:32px;height:32px;border-radius:50%;background:#8189b8;transform:translate(-50%,-50%);transition:left .09s linear,background .2s,box-shadow .2s;opacity:.28}
+.dot.ok{background:var(--green);box-shadow:0 0 0 6px rgba(46,230,166,.2),0 0 28px var(--green)}
+.dot.near{background:var(--yel);box-shadow:0 0 18px rgba(255,209,102,.6)}
+.dot.far{background:var(--red);box-shadow:0 0 18px rgba(255,93,115,.6)}
+.ends{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);font-weight:600}
+.hint{font:700 20px 'Sora',sans-serif;min-height:30px;margin-top:10px}
+.det{color:var(--muted);font-size:14px;margin-top:4px}
+.holdbar{height:8px;border-radius:4px;background:rgba(0,0,0,.35);margin-top:14px;overflow:hidden}
+.holdbar i,.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),#ff9f43);transition:width .1s linear;border-radius:4px;box-shadow:0 0 12px rgba(255,200,87,.5)}
+.bar{height:10px;border-radius:5px;background:rgba(0,0,0,.35);overflow:hidden;margin:6px 0}
+.bar i{background:var(--grad);transition:width .6s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 14px rgba(92,140,255,.6)}
+.statrow{display:flex;justify-content:space-between;font-weight:700;color:var(--muted);font-size:14px}
+.flash-ok{animation:fok .8s}.flash-bad{animation:fbad .8s}
+@keyframes fok{0%{background:rgba(46,230,166,.38);transform:scale(1.015)}100%{background:var(--glass);transform:none}}
+@keyframes fbad{0%{background:rgba(255,93,115,.32);transform:translateX(-6px)}25%{transform:translateX(6px)}50%{transform:translateX(-4px)}75%{transform:translateX(3px)}100%{background:var(--glass);transform:none}}
+.demo{background:rgba(255,167,67,.16);border:1px solid rgba(255,167,67,.5);color:#ffd9a3;border-radius:14px;padding:8px 12px;font-weight:700;font-size:12.5px;text-align:center;margin-bottom:10px}
+.earbtns{display:flex;gap:12px;margin:16px 0 4px}
+.earbtns .btn{flex:1;font:700 20px 'Sora',sans-serif;padding:24px 10px;flex-direction:column;gap:8px}
+.earbtns .btn .ic{width:28px;height:28px}
+
+/* result */
+.big-ic{width:84px;height:84px;border-radius:28px;background:var(--grad);display:grid;place-items:center;margin:4px auto 12px;box-shadow:0 18px 50px rgba(92,110,255,.5);animation:float 3.2s ease-in-out infinite}
+.big-ic.good{background:linear-gradient(135deg,#2ee6a6,#13b886);box-shadow:0 18px 50px rgba(46,230,166,.45)}
+.big-ic .ic{width:42px;height:42px;color:#fff}
+@keyframes float{50%{transform:translateY(-8px) rotate(2deg)}}
+.score{font:700 68px 'Sora',sans-serif;text-align:center;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.1}
+.center{text-align:center}
+.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:50}
+.confetti i{position:absolute;top:-24px;width:9px;height:15px;border-radius:2px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(112vh) rotate(760deg)}}
+
+/* onboarding + tour */
+.ob-dots,.wdots{display:flex;gap:8px;justify-content:center;margin:6px 0 16px}
+.ob-dots i,.wdots i{height:6px;width:30px;border-radius:3px;background:rgba(255,255,255,.14);transition:.45s}
+.ob-dots i.on,.wdots i.on{background:var(--grad);width:54px}
+.ob-dots i.done,.wdots i.done{background:var(--green)}
+.slide{animation:slideIn .55s cubic-bezier(.2,.8,.2,1) both}
+.slide.back{animation-name:slideBack}
+@keyframes slideIn{from{opacity:0;transform:translateX(34px)}to{opacity:1;transform:none}}
+@keyframes slideBack{from{opacity:0;transform:translateX(-34px)}to{opacity:1;transform:none}}
+.tour-ic{width:96px;height:96px;border-radius:32px;background:var(--grad);display:grid;place-items:center;margin:6px auto 18px;box-shadow:0 18px 54px rgba(92,110,255,.55);animation:float 3.4s ease-in-out infinite}
+.tour-ic .ic{width:46px;height:46px;color:#fff}
+.tour-body{font-size:17px;color:#dfe3ff;text-align:center}
+.demo-meter .dot{animation:sweep 5s ease-in-out infinite;opacity:1}
+@keyframes sweep{0%{left:14%;background:var(--red)}28%{left:34%;background:var(--yel)}50%{left:50%;background:var(--green);box-shadow:0 0 0 6px rgba(46,230,166,.2),0 0 28px var(--green)}72%{left:66%;background:var(--yel)}88%{left:86%;background:var(--red)}100%{left:14%;background:var(--red)}}
+
+/* warm-up */
+.breath{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#8fa3ff,#3a2fb5 75%);margin:20px auto;transition:transform 4s ease-in-out,box-shadow 4s;box-shadow:0 0 40px rgba(124,92,255,.4)}
+.breath.big{transform:scale(1.45);box-shadow:0 0 90px rgba(124,92,255,.7)}
+.track{position:relative;height:200px;width:62px;margin:12px auto;border-radius:31px;background:rgba(0,0,0,.35);border:1px solid var(--line)}
+.ball{position:absolute;left:50%;bottom:7px;width:42px;height:42px;margin-left:-21px;border-radius:50%;background:var(--grad);box-shadow:0 0 24px rgba(92,140,255,.8);transition:bottom 4s ease-in-out}
+.ball.up{bottom:151px}
+.hum-ic{display:grid;place-items:center;width:120px;height:120px;border-radius:50%;margin:14px auto;background:radial-gradient(circle at 35% 30%,#8fa3ff,#3a2fb5 75%)}
+.hum-ic .ic{width:50px;height:50px}
+.hum-ic.pulse{animation:breathe 1.2s ease-in-out infinite}
+
+/* theory */
+details{background:var(--glass);border:1px solid var(--line);border-radius:18px;padding:0 18px;margin:10px 0;transition:.3s;backdrop-filter:blur(12px)}
+details[open]{background:var(--glass2);border-color:rgba(124,92,255,.45)}
+summary{font:700 16px 'Inter',sans-serif;cursor:pointer;padding:16px 0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'';width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .3s;flex:none;margin-right:4px}
+details[open] summary::after{transform:rotate(-135deg)}
+details p{color:#dfe3ff;animation:rise .4s both}
+details .row{margin:10px 0 16px}
+.coach{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(8,10,26,.86);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:var(--radius);z-index:5;padding:18px;animation:coachIn .35s cubic-bezier(.2,.8,.2,1) both}
+.coach.out{animation:coachOut .3s both}
+@keyframes coachIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+@keyframes coachOut{to{opacity:0;transform:scale(1.03)}}
+.coach .arrow{width:96px;height:96px;border-radius:30px;background:linear-gradient(135deg,#ff9a5c,#ff5d73);display:grid;place-items:center;box-shadow:0 16px 44px rgba(255,93,115,.5)}
+.coach .arrow .ic{width:46px;height:46px;color:#fff}
+.coach.up .arrow{animation:bobUp .9s ease-in-out infinite}
+.coach.down .arrow{animation:bobDown .9s ease-in-out infinite}
+.coach.mic .arrow{animation:pulseMic 1s ease-in-out infinite}
+.coach.steady .arrow,.coach.hold .arrow{animation:wiggle .7s ease-in-out infinite}
+.coach p{font:700 19px 'Sora',sans-serif;line-height:1.35;max-width:300px}
+@keyframes bobUp{0%,100%{transform:translateY(8px)}50%{transform:translateY(-16px)}}
+@keyframes bobDown{0%,100%{transform:translateY(-8px)}50%{transform:translateY(16px)}}
+@keyframes pulseMic{0%,100%{transform:scale(1);box-shadow:0 16px 44px rgba(255,93,115,.5)}50%{transform:scale(1.12);box-shadow:0 0 0 18px rgba(255,93,115,.18)}}
+@keyframes wiggle{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+.tip{margin-top:12px;padding:12px 14px;border-radius:14px;background:rgba(255,200,87,.12);border:1px solid rgba(255,200,87,.4);color:#ffe3a3;font-size:14.5px;text-align:left}
+select{width:100%;padding:14px 16px;border-radius:15px;border:1px solid var(--line);background:rgba(0,0,0,.35);color:var(--text);font:600 15px 'Inter',sans-serif;margin:6px 0;outline:none}
+input[type=range]{width:100%;accent-color:#7c5cff;margin:8px 0 2px}
+.footer{margin-top:24px;text-align:center;color:var(--muted);font-size:13px}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><span class="mark" id="mark"></span><span id="brand"></span></div>
+    <div class="tools">
+      <button class="icbtn" id="voiceBtn" data-act="voiceToggle"></button>
+      <button class="icbtn" id="gearBtn" data-go="settings"></button>
+      <div class="lang"><button data-lang="en">EN</button><button data-lang="es">ES</button></div>
+    </div>
+  </header>
+  <main id="view"></main>
+</div>
+<nav class="tabs hide" id="tabs"></nav>
+
+<script>
+// ==PURE==
+const mtof = m => 440 * Math.pow(2, (m - 69) / 12);
+const ftom = f => 69 + 12 * Math.log2(f / 440);
+function foldCents(f, tf) {
+  const c = 1200 * Math.log2(f / tf);
+  return ((c + 600) % 1200 + 1200) % 1200 - 600;
+}
+function median(a) { const s = [...a].sort((x, y) => x - y); return s[s.length >> 1]; }
+function yin(buf, sr) {
+  const N = buf.length, W = N >> 1;
+  let rms = 0;
+  for (let i = 0; i < N; i++) rms += buf[i] * buf[i];
+  rms = Math.sqrt(rms / N);
+  if (rms < 0.012) return null;
+  const tauMax = Math.min(W - 1, Math.floor(sr / 70));
+  const tauMin = Math.max(2, Math.floor(sr / 1100));
+  const d = new Float32Array(tauMax + 1);
+  for (let tau = 1; tau <= tauMax; tau++) {
+    let s = 0;
+    for (let i = 0; i < W; i++) { const x = buf[i] - buf[i + tau]; s += x * x; }
+    d[tau] = s;
+  }
+  const cm = new Float32Array(tauMax + 1);
+  cm[0] = 1;
+  let run = 0;
+  for (let tau = 1; tau <= tauMax; tau++) { run += d[tau]; cm[tau] = run === 0 ? 1 : d[tau] * tau / run; }
+  let tau = -1;
+  for (let t = tauMin; t <= tauMax; t++) {
+    if (cm[t] < 0.15) {
+      while (t + 1 <= tauMax && cm[t + 1] < cm[t]) t++;
+      tau = t; break;
+    }
+  }
+  if (tau < 0) return null;
+  let better = tau;
+  if (tau > 1 && tau < tauMax) {
+    const s0 = cm[tau - 1], s1 = cm[tau], s2 = cm[tau + 1];
+    const den = 2 * (2 * s1 - s2 - s0);
+    if (den !== 0) better = tau + (s2 - s0) / den;
+  }
+  return sr / better;
+}
+// ==/PURE==
+
+/* ---------- icons ---------- */
+const ICONS = {
+  music:'<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
+  target:'<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+  flame:'<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>',
+  ruler:'<path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/>',
+  book:'<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>',
+  star:'<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
+  sliders:'<line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/>',
+  volume:'<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>',
+  volumeoff:'<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>',
+  mic:'<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>',
+  check:'<polyline points="20 6 9 17 4 12"/>',
+  lock:'<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+  back:'<line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>',
+  next:'<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>',
+  x:'<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>',
+  play:'<polygon points="6 3 20 12 6 21 6 3"/>',
+  home:'<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/>',
+  gauge:'<path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/>',
+  headphones:'<path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>',
+  replay:'<polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>',
+  up:'<line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/>',
+  down:'<line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>',
+  trophy:'<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>'
+};
+const ic = (n, cls = '') => `<svg class="ic ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICONS[n]}</svg>`;
+const starsHTML = (n, cls = '') => `<span class="stars-row ${cls}">${[0, 1, 2].map(i => `<svg class="star ${i < n ? 'on' : ''}" style="animation-delay:${(i * .18 + .25).toFixed(2)}s" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`).join('')}</span>`;
+
+/* ---------- text ---------- */
+const TXT = {
+  en: {
+    appTitle:'Worship Team Pitch Trainer', brand:'Pitch Trainer', hi:'Hi', friend:'friend', homeSub:'{n} of 10 levels passed',
+    qName:"What's your name?", qNameSub:"We'll use it to greet you.", qVoice:'Which voice sounds most like yours?', qRead:'Do you want me to read the instructions out loud?',
+    voiceLow:'Lower voice', voiceLowSub:'Most men. Deep and full.', voiceHigh:'Higher voice', voiceHighSub:'Most women. Bright and light.',
+    voiceUnsure:"I'm not sure", voiceUnsureSub:"No problem. We'll find your range together.",
+    readYes:'Yes, read to me', readYesSub:'Instructions are spoken aloud and written on screen.', readNo:"No, I'll read myself", readNoSub:'You can turn it on anytime with the speaker button.',
+    next:'Next', skip:'Skip tour', done:'Done', cont:'Continue', levels:'Levels', warmup:'Warm-Up', range:'Find My Range', theory:'Learn the Words', progress:'My Progress', settings:'Settings', back:'Back', level:'Level',
+    tabHome:'Home', tabLevels:'Levels', tabWarm:'Warm-Up', tabWords:'Words', tabProgress:'Progress',
+    tileWarmSub:'Get your voice ready', tileRangeSub:'Find your best starting note', tileWordsSub:'Music words, made simple', tileTour:'App tour', tileTourSub:'See what everything does',
+    tSing:'Singing', tEar:'Ear training', tHarm:'Harmony',
+    howItWorks:'How it works', step1:'Learn: hear what this level is about.', step2:'Practice: sing along. Mistakes are fine, just keep going!', step3:'Test: score {pass}% or more to unlock the next level.',
+    readToMe:'Read it to me', hearNotes:'Listen to the notes', startPractice:'Start practice', takeTest:'Take the test',
+    testLocked:'Reach the practice goal to unlock the test.', best:'Best score', goal:'Goal',
+    instrTitle:'What to do', hearInstr:'Hear instructions', hearInstrNow:'Listen to the instructions…',
+    testHow:'This is the test. It works like practice, but with no hints and no repeats. You need {pass} percent to pass. Good luck!',
+    listen:'Listen…', singNow:'Your turn! Sing it', hit:'Nailed it!', miss:'Not yet. Keep going!',
+    hintNone:'Waiting for your voice…', hintOn:'Right on!', hintLow:'A little higher', hintHigh:'A little lower',
+    tooLow:'Too low', tooHigh:'Too high', youSing:'You are singing', anyOctave:'Any octave is fine. Sing where it is comfortable.',
+    hearAgain:'Hear it again', stop:'Stop', testUnlocked:'Test unlocked!', pPractice:'Practice', pTest:'Test',
+    higher:'Higher', lower:'Lower', earAsk:'Was the second note higher or lower?',
+    correct:'Correct!', wrong:'Not quite. It was {dir}.', passed:'You passed!', notYet:'Not yet. Practice more!',
+    needed:'{pass}% needed to pass', nextLevel:'Next level', tryAgain:'Try the test again', backPractice:'Back to practice',
+    micProblem:"The microphone isn't available here. Open the app in your normal browser and allow the mic, or try Demo mode to see how it works.",
+    useDemo:'Try Demo mode', demoBanner:'DEMO MODE: a pretend singer is singing for you',
+    headphones:'Tip: use headphones for this level.', hearHarm:'Now the harmony note…',
+    earHear:'First note, then second note. Is the second one higher or lower?', earHigh:'This one went higher', earLow:'This one went lower',
+    wTitle:'Warm-Up', wStart:'Start', wNext:'Next', wFinish:'Finish', wDone:'Voice warmed up! You are ready to sing.',
+    wBreatheT:'1. Breathe', wBreatheB:'Stand tall. Breathe in through your nose into your belly for 4 seconds, hold for 2, then let it out slowly like blowing through a straw.',
+    wHumT:'2. Hum', wHumB:'Listen to the note, then hum "mmm" on it with your lips lightly closed. Feel the buzz in your lips and nose.',
+    wSirenT:'3. Siren', wSirenB:'Say "woo" and slide your voice up and down like a siren. Follow the ball. Stay light, never push.',
+    wScaleT:'4. Little scale', wScaleB:'Sing "ah" up five notes and back down, following the notes you hear.',
+    wIn:'Breathe in…', wHold:'Hold…', wOut:'Slowly out…', wHum:'Hum along!', wSiren:'Sirening…', wListen:'Listen first…',
+    rTitle:'Find My Range', rIntro:'We will find your lowest and highest comfortable notes. No straining!',
+    rLow:'Sing your lowest comfortable note and hold it steady.', rHigh:'Now sing your highest comfortable note, no shouting, and hold it.',
+    rListening:'Listening… hold it steady', rGot:'Got it', rResult:'Your range', rSaved:'Your starting note is now {n}. Saved!',
+    rRetry:'Try again', rTimeout:"Didn't catch a steady note. Try again, a little louder.", rBegin:'Start with my lowest note', rLowShort:'Lowest', rHighShort:'Highest',
+    pStars:'Stars earned', pWarm:'Warm-ups done', pLevels:'Levels passed',
+    sLang:'Language', sVoice:'Voice', sName:'Name', sStart:'Starting note', sDemo:'Demo mode (pretend singer, no mic)', sOn:'On', sOff:'Off', sRead:'Read instructions out loud',
+    sTour:'Replay the app tour', sReset:'Reset all progress', sConfirm:'Tap again to confirm',
+    tTitle:'Learn the Words', tIntro:'Plain-language explanations. Tap a word to open it.', tPlay:'Hear it', tRead:'Read it',
+    tourLast1:'Start Level 1', tourLast2:'Find my range first', tourBack:'Back',
+    coachMic:"I didn't hear you. Sing a little louder, with an open ah sound.", coachLow:'You were a little low. Go a little higher.', coachHigh:'You were a little high. Go a little lower.',
+    coachSteady:'So close! Hold the note steady a little longer.', coachHold:'Almost! Keep the note steady for the full three seconds.',
+    earWrong:'Not quite. The second note went {dir}.', dirUp:'higher', dirDown:'lower', listenAgain:'Listen again.',
+    failTip:'Go back to practice. Listen to each note first, then sing it softly and steadily. You can do it!', failSay:'You scored {pct} percent, and you need {pass}. {tip}',
+    sVoicePick:'Reading voice', sVoiceAuto:'Automatic (best available)', sPreview:'Preview', sSpeed:'Speaking speed', sSlow:'Slower', sFast:'Faster',
+    sVoiceTip:'Tip: the most natural voices come from Chrome or Edge, or from Siri and Premium voices on iPhone and Mac.', sPreviewText:"Hi! I'm your voice coach. Let's sing together."
+  },
+  es: {
+    appTitle:'Entrenador de Afinación', brand:'Afinación', hi:'Hola', friend:'amigo', homeSub:'{n} de 10 niveles pasados',
+    qName:'¿Cómo te llamas?', qNameSub:'Lo usaremos para saludarte.', qVoice:'¿Cuál voz se parece más a la tuya?', qRead:'¿Quieres que lea las instrucciones en voz alta?',
+    voiceLow:'Voz grave', voiceLowSub:'La mayoría de los hombres. Profunda y llena.', voiceHigh:'Voz aguda', voiceHighSub:'La mayoría de las mujeres. Brillante y ligera.',
+    voiceUnsure:'No estoy seguro', voiceUnsureSub:'No hay problema. Encontraremos tu rango juntos.',
+    readYes:'Sí, léeme', readYesSub:'Las instrucciones se dicen en voz alta y también se escriben.', readNo:'No, leeré yo', readNoSub:'Puedes activarlo cuando quieras con el botón de la bocina.',
+    next:'Siguiente', skip:'Saltar recorrido', done:'Listo', cont:'Continuar', levels:'Niveles', warmup:'Calentamiento', range:'Mi rango', theory:'Aprende las palabras', progress:'Mi progreso', settings:'Ajustes', back:'Atrás', level:'Nivel',
+    tabHome:'Inicio', tabLevels:'Niveles', tabWarm:'Calentar', tabWords:'Palabras', tabProgress:'Progreso',
+    tileWarmSub:'Prepara tu voz', tileRangeSub:'Encuentra tu mejor nota inicial', tileWordsSub:'Palabras de música, fáciles', tileTour:'Recorrido', tileTourSub:'Mira qué hace cada cosa',
+    tSing:'Canto', tEar:'Entrenamiento del oído', tHarm:'Armonía',
+    howItWorks:'Cómo funciona', step1:'Aprende: escucha de qué trata el nivel.', step2:'Práctica: canta. Los errores no importan, ¡sigue!', step3:'Prueba: saca {pass}% o más para abrir el siguiente nivel.',
+    readToMe:'Léemelo', hearNotes:'Escuchar las notas', startPractice:'Empezar práctica', takeTest:'Hacer la prueba',
+    testLocked:'Llega a la meta de práctica para abrir la prueba.', best:'Mejor puntaje', goal:'Meta',
+    instrTitle:'Qué hacer', hearInstr:'Escuchar instrucciones', hearInstrNow:'Escucha las instrucciones…',
+    testHow:'Esta es la prueba. Funciona como la práctica, pero sin pistas ni repeticiones. Necesitas {pass} por ciento para pasar. ¡Suerte!',
+    listen:'Escucha…', singNow:'¡Tu turno! Cántala', hit:'¡Perfecto!', miss:'Todavía no. ¡Sigue!',
+    hintNone:'Esperando tu voz…', hintOn:'¡Justo!', hintLow:'Un poco más agudo', hintHigh:'Un poco más grave',
+    tooLow:'Muy grave', tooHigh:'Muy agudo', youSing:'Estás cantando', anyOctave:'Cualquier octava sirve. Canta donde te sea cómodo.',
+    hearAgain:'Escuchar otra vez', stop:'Parar', testUnlocked:'¡Prueba desbloqueada!', pPractice:'Práctica', pTest:'Prueba',
+    higher:'Más agudo', lower:'Más grave', earAsk:'¿La segunda nota fue más aguda o más grave?',
+    correct:'¡Correcto!', wrong:'Casi. Fue {dir}.', passed:'¡Pasaste!', notYet:'Todavía no. ¡Practica más!',
+    needed:'Se necesita {pass}% para pasar', nextLevel:'Siguiente nivel', tryAgain:'Repetir la prueba', backPractice:'Volver a práctica',
+    micProblem:'El micrófono no está disponible aquí. Abre la app en tu navegador normal y permite el micrófono, o prueba el modo Demo para ver cómo funciona.',
+    useDemo:'Probar modo Demo', demoBanner:'MODO DEMO: un cantante de mentira canta por ti',
+    headphones:'Consejo: usa audífonos en este nivel.', hearHarm:'Ahora la nota de la armonía…',
+    earHear:'Primera nota, luego la segunda. ¿La segunda es más aguda o más grave?', earHigh:'Esta subió', earLow:'Esta bajó',
+    wTitle:'Calentamiento', wStart:'Empezar', wNext:'Siguiente', wFinish:'Terminar', wDone:'¡Voz calentada! Estás listo para cantar.',
+    wBreatheT:'1. Respira', wBreatheB:'Párate derecho. Inhala por la nariz hacia la barriga por 4 segundos, aguanta 2, y suelta el aire despacio como soplando por un sorbete.',
+    wHumT:'2. Tararea', wHumB:'Escucha la nota y tarareala con "mmm" con los labios suavemente cerrados. Siente el cosquilleo en los labios y la nariz.',
+    wSirenT:'3. Sirena', wSirenB:'Di "uu" y desliza tu voz hacia arriba y abajo como una sirena. Sigue la bolita. Suave, sin forzar.',
+    wScaleT:'4. Escalita', wScaleB:'Canta "a" subiendo cinco notas y bajando, siguiendo las notas que oyes.',
+    wIn:'Inhala…', wHold:'Aguanta…', wOut:'Suelta despacio…', wHum:'¡Tararea!', wSiren:'Sirena…', wListen:'Escucha primero…',
+    rTitle:'Mi rango', rIntro:'Vamos a encontrar tu nota más grave y tu nota más aguda cómodas. ¡Sin forzar!',
+    rLow:'Canta tu nota más grave cómoda y mantenla firme.', rHigh:'Ahora canta tu nota más aguda cómoda, sin gritar, y mantenla.',
+    rListening:'Escuchando… mantenla firme', rGot:'Listo', rResult:'Tu rango', rSaved:'Tu nota inicial ahora es {n}. ¡Guardado!',
+    rRetry:'Intentar otra vez', rTimeout:'No capté una nota firme. Intenta otra vez, un poco más fuerte.', rBegin:'Empezar con mi nota más grave', rLowShort:'Más grave', rHighShort:'Más aguda',
+    pStars:'Estrellas ganadas', pWarm:'Calentamientos hechos', pLevels:'Niveles pasados',
+    sLang:'Idioma', sVoice:'Voz', sName:'Nombre', sStart:'Nota inicial', sDemo:'Modo Demo (cantante de mentira, sin micrófono)', sOn:'Sí', sOff:'No', sRead:'Leer instrucciones en voz alta',
+    sTour:'Repetir el recorrido de la app', sReset:'Borrar todo el progreso', sConfirm:'Toca otra vez para confirmar',
+    tTitle:'Aprende las palabras', tIntro:'Explicaciones en palabras sencillas. Toca una palabra para abrirla.', tPlay:'Escúchalo', tRead:'Léemelo',
+    tourLast1:'Empezar nivel 1', tourLast2:'Primero mi rango', tourBack:'Atrás',
+    coachMic:'No te escuché. Canta un poco más fuerte, con un sonido abierto de "a".', coachLow:'Estuviste un poco grave. Sube un poquito.', coachHigh:'Estuviste un poco agudo. Baja un poquito.',
+    coachSteady:'¡Casi! Mantén la nota firme un poco más.', coachHold:'¡Casi! Mantén la nota firme los tres segundos completos.',
+    earWrong:'Casi. La segunda nota fue {dir}.', dirUp:'más aguda', dirDown:'más grave', listenAgain:'Escucha otra vez.',
+    failTip:'Vuelve a la práctica. Escucha cada nota primero y luego cántala suave y firme. ¡Tú puedes!', failSay:'Sacaste {pct} por ciento y necesitas {pass}. {tip}',
+    sVoicePick:'Voz de lectura', sVoiceAuto:'Automática (la mejor disponible)', sPreview:'Probar', sSpeed:'Velocidad al hablar', sSlow:'Más lento', sFast:'Más rápido',
+    sVoiceTip:'Consejo: las voces más naturales vienen de Chrome o Edge, o de las voces Siri y Premium en iPhone y Mac.', sPreviewText:'¡Hola! Soy tu entrenador de voz. ¡Cantemos juntos!'
+  }
+};
+
+const TOUR = [
+  { icon:'music', t:{en:'Welcome to your voice gym',es:'Bienvenido a tu gimnasio de voz'},
+    d:{en:'This app trains your ear and your voice, step by step, like a game. You learn a skill, practice it, then take a test to unlock the next level.',es:'Esta app entrena tu oído y tu voz, paso a paso, como un juego. Aprendes una habilidad, la practicas y haces una prueba para abrir el siguiente nivel.'} },
+  { icon:'target', t:{en:'Levels',es:'Niveles'},
+    d:{en:'There are ten levels. Each one starts with a short lesson, then practice where mistakes are okay, then a test. Reach the pass mark to unlock the next level and earn up to three stars.',es:'Hay diez niveles. Cada uno empieza con una lección corta, luego práctica donde los errores están bien, y luego una prueba. Llega a la nota para pasar, abrir el siguiente nivel y ganar hasta tres estrellas.'} },
+  { icon:'gauge', demo:true, t:{en:'The pitch meter',es:'El medidor de tono'},
+    d:{en:'When you sing, the glowing ball shows your pitch. Ball on the left means too low, so go a little higher. Ball on the right means too high, so go a little lower. When it turns green in the middle, you are right on the note.',es:'Cuando cantas, la bolita brillante muestra tu tono. Bolita a la izquierda es muy grave, así que sube un poquito. Bolita a la derecha es muy agudo, así que baja un poquito. Cuando se pone verde en el centro, estás justo en la nota.'} },
+  { icon:'flame', t:{en:'Warm-Up',es:'Calentamiento'},
+    d:{en:'Before you practice, warm up your voice with breathing, humming, a siren, and a little scale. There is no score here, it is just getting your voice ready.',es:'Antes de practicar, calienta tu voz con respiración, tarareo, una sirena y una escalita. Aquí no hay puntaje, solo preparas tu voz.'} },
+  { icon:'ruler', t:{en:'Find My Range',es:'Mi rango'},
+    d:{en:'Sing your lowest and highest comfortable notes. The app finds the best starting note for your voice and saves it.',es:'Canta tu nota más grave y tu nota más aguda cómodas. La app encuentra la mejor nota inicial para tu voz y la guarda.'} },
+  { icon:'book', t:{en:'Learn the Words',es:'Aprende las palabras'},
+    d:{en:'A simple dictionary of music words, explained in plain language, with sounds you can hear. Tap the speaker on any word to hear it read out loud.',es:'Un diccionario sencillo de palabras de música, explicadas en lenguaje claro, con sonidos que puedes escuchar. Toca la bocina en cualquier palabra para oírla en voz alta.'} },
+  { icon:'star', t:{en:'My Progress',es:'Mi progreso'},
+    d:{en:'See your stars, your best scores, and how many levels you have passed. Come back anytime to see how far you have come.',es:'Mira tus estrellas, tus mejores puntajes y cuántos niveles has pasado. Vuelve cuando quieras para ver cuánto has avanzado.'} },
+  { icon:'mic', last:true, t:{en:'Before you start',es:'Antes de empezar'},
+    d:{en:'Allow the microphone when asked. Sing in a quiet place. Any octave is fine, so sing where it feels comfortable. Use headphones for the harmony level. And remember, mistakes are how we learn.',es:'Permite el micrófono cuando te lo pida. Canta en un lugar tranquilo. Cualquier octava sirve, así que canta donde te sea cómodo. Usa audífonos en el nivel de armonía. Y recuerda, los errores son cómo aprendemos.'} }
+];
+
+const LEVELS = [
+  { id:1, type:'sing', notes:[0], goal:6, test:8, pass:80, tol:60,
+    name:{en:'Match One Note',es:'Iguala una nota'},
+    desc:{en:'Hear one note, then sing it back. The meter shows if you are too low, too high, or right on.',es:'Escucha una nota y cántala igual. El medidor te dice si estás muy grave, muy agudo o justo.'},
+    how:{en:'Listen to the note. Then sing it back with a steady voice, like saying "ah". Watch the meter. If the ball is on the left, go a little higher. If it is on the right, go a little lower. When it turns green, hold it. Mistakes are fine, just keep going.',es:'Escucha la nota. Luego cántala con voz firme, como diciendo "a". Mira el medidor. Si la bolita está a la izquierda, sube un poquito. Si está a la derecha, baja un poquito. Cuando se ponga verde, mantenla. Los errores no importan, sigue.'} },
+  { id:2, type:'ear', goal:6, test:10, pass:80,
+    name:{en:'Higher or Lower',es:'Más agudo o más grave'},
+    desc:{en:'Hear two notes. Is the second one higher or lower? Your ears learn first, then your voice follows.',es:'Escucha dos notas. ¿La segunda es más aguda o más grave? Primero aprende tu oído, y tu voz lo sigue.'},
+    how:{en:'You will hear two notes. Tap Higher if the second note went up, or Lower if it went down. You can hear them again anytime in practice.',es:'Vas a oír dos notas. Toca Más agudo si la segunda nota subió, o Más grave si bajó. En la práctica puedes escucharlas otra vez cuando quieras.'} },
+  { id:3, type:'sing', notes:[0,2], goal:8, test:8, pass:80, tol:55,
+    name:{en:'Two Notes',es:'Dos notas'},
+    desc:{en:'Sing one note, then the note one step above it.',es:'Canta una nota y luego la nota un paso más arriba.'},
+    how:{en:'Listen to the first note and sing it. Then listen to the second note, one step higher, and sing that one. Watch the meter and hold each note until it turns green.',es:'Escucha la primera nota y cántala. Luego escucha la segunda nota, un paso más arriba, y cántala. Mira el medidor y mantén cada nota hasta que se ponga verde.'} },
+  { id:4, type:'sing', notes:[0,2,4], goal:9, test:9, pass:80, tol:55,
+    name:{en:'Three-Note Pattern',es:'Patrón de tres notas'},
+    desc:{en:'Do, Re, Mi. Climb three steps, one at a time.',es:'Do, Re, Mi. Sube tres escalones, uno a la vez.'},
+    how:{en:'Sing three notes going up, one at a time. Listen to each note first, then sing it back.',es:'Canta tres notas subiendo, una a la vez. Escucha cada nota primero y luego cántala.'} },
+  { id:5, type:'sing', notes:[0,2,4,5,7,9,11,12], goal:16, test:8, pass:80, tol:50,
+    name:{en:'The Major Scale',es:'La escala mayor'},
+    desc:{en:'Climb the whole ladder, from Do up to the next Do.',es:'Sube toda la escalera, del Do hasta el siguiente Do.'},
+    how:{en:'Climb the scale one note at a time: Do, Re, Mi, Fa, Sol, La, Si, Do. Listen first, then sing each note.',es:'Sube la escala una nota a la vez: Do, Re, Mi, Fa, Sol, La, Si, Do. Escucha primero y luego canta cada nota.'} },
+  { id:6, type:'sing', notes:[0,4,0,7,0,5], goal:12, test:12, pass:85, tol:50,
+    name:{en:'Jumps',es:'Saltos'},
+    desc:{en:'Skip over notes: jumps of a third, a fifth and a fourth. Jumps build real accuracy.',es:'Salta notas: saltos de tercera, quinta y cuarta. Los saltos dan precisión de verdad.'},
+    how:{en:'These notes jump. Listen carefully to how far each jump is, then sing it. Take your time.',es:'Estas notas dan saltos. Escucha con cuidado qué tan grande es cada salto y luego cántalo. Sin prisa.'} },
+  { id:7, type:'sing', notes:[0,4,7], hold:3, goal:6, test:6, pass:85, tol:45,
+    name:{en:'Hold It Steady',es:'Mantenla firme'},
+    desc:{en:'Hold each note for 3 seconds without drifting up or down.',es:'Mantén cada nota por 3 segundos sin subir ni bajar.'},
+    how:{en:'Hold each note for three seconds without moving. The gold bar fills while you stay on the note. If you drift away, it starts over.',es:'Mantén cada nota por tres segundos sin moverte. La barra dorada se llena mientras te quedas en la nota. Si te sales, empieza de nuevo.'} },
+  { id:8, type:'sing', notes:[12,11,9,7,5,4,2,0], goal:16, test:8, pass:85, tol:45,
+    name:{en:'Down the Ladder',es:'Bajando la escalera'},
+    desc:{en:'Sing back down the scale. Going down is trickier than going up.',es:'Canta la escala hacia abajo. Bajar es más difícil que subir.'},
+    how:{en:'Now sing down the scale, from the high Do back to the low Do. Listen first, then sing each note.',es:'Ahora canta la escala hacia abajo, del Do agudo al Do grave. Escucha primero y luego canta cada nota.'} },
+  { id:9, type:'sing', notes:[-5,0,4,0,4,2,0,-3,-5], goal:18, test:9, pass:90, tol:45,
+    name:{en:'A Real Melody',es:'Una melodía real'},
+    desc:{en:'Sing the first phrase of a familiar hymn. Your own worship songs get added here later.',es:'Canta la primera frase de un himno conocido. Después añadiremos tus propias canciones de alabanza.'},
+    how:{en:'This is the start of a familiar hymn. Listen to each note and sing it back. Do not rush.',es:'Este es el comienzo de un himno conocido. Escucha cada nota y cántala. No te apresures.'} },
+  { id:10, type:'sing', harmony:true, notes:[{m:0,t:4},{m:2,t:5},{m:4,t:7},{m:2,t:5}], goal:8, test:8, pass:90, tol:45,
+    name:{en:'Harmony',es:'Armonía'},
+    desc:{en:'Hear the melody, then sing a different note that fits with it. Use headphones if you can.',es:'Escucha la melodía y canta una nota distinta que combine con ella. Usa audífonos si puedes.'},
+    how:{en:'First you will hear the melody note. Then sing the harmony note, a different note that fits with it. Use headphones if you can, so the microphone only hears you.',es:'Primero oirás la nota de la melodía. Luego canta la nota de la armonía, una nota distinta que combina con ella. Usa audífonos si puedes, para que el micrófono solo te oiga a ti.'} }
+];
+
+const THEORY = [
+  { k:{en:'Pitch',es:'Tono (altura)'}, d:{en:'How high or low a sound is. A bird chirp is high pitched. A big drum is low pitched.',es:'Qué tan agudo o grave es un sonido. El canto de un pájaro es agudo. Un tambor grande es grave.'}, demo:[0,7] },
+  { k:{en:'Note',es:'Nota'}, d:{en:'One single sound with a name: Do, Re, Mi (or C, D, E). Songs are just notes in a row.',es:'Un solo sonido con nombre: Do, Re, Mi. Las canciones son notas una tras otra.'}, demo:[0,2,4] },
+  { k:{en:'In tune, sharp and flat',es:'Afinado, alto y bajo'}, d:{en:'In tune means right on the note. Sharp means a little too high. Flat means a little too low. The meter in this app shows you which one you are.',es:'Afinado es estar justo en la nota. Si cantas un poquito arriba, estás alto. Un poquito abajo, estás bajo. El medidor de esta app te dice cuál eres.'} },
+  { k:{en:'Octave',es:'Octava'}, d:{en:'The same note, but higher or lower, like a twin. Men and women often sing the same song one octave apart, and that is perfectly fine.',es:'La misma nota, pero más aguda o más grave, como un gemelo. Los hombres y las mujeres suelen cantar la misma canción con una octava de diferencia, y eso está bien.'}, demo:[0,12] },
+  { k:{en:'Scale',es:'Escala'}, d:{en:'A ladder of notes going up or down in order. Do Re Mi Fa Sol La Si Do is the one everyone knows.',es:'Una escalera de notas que sube o baja en orden. Do Re Mi Fa Sol La Si Do es la que todos conocen.'}, demo:[0,2,4,5,7,9,11,12] },
+  { k:{en:'Interval',es:'Intervalo'}, d:{en:'The distance between two notes, like the size of a step. A small step is close together. A jump is far apart.',es:'La distancia entre dos notas, como el tamaño de un paso. Un paso pequeño es cercano. Un salto es lejano.'}, demo:[0,2,0,7] },
+  { k:{en:'Key',es:'Tonalidad (tono de la canción)'}, d:{en:'The home note a song is built around. Changing the key slides the whole song higher or lower so it fits the singers.',es:'La nota "casa" de una canción. Cambiar la tonalidad sube o baja toda la canción para que le quede bien a los cantantes.'} },
+  { k:{en:'Range',es:'Rango'}, d:{en:'From your lowest to your highest comfortable note. Everyone is different, and it grows with practice.',es:'De tu nota más grave a tu nota más aguda cómodas. Cada persona es distinta, y crece con la práctica.'} },
+  { k:{en:'Chest voice and head voice',es:'Voz de pecho y voz de cabeza'}, d:{en:'Chest voice is the lower, fuller sound, like talking. Head voice is the lighter, higher sound, like a soft "woo". Good singers slide between them smoothly.',es:'La voz de pecho es el sonido más grave y lleno, como al hablar. La voz de cabeza es el sonido más ligero y agudo, como un "uu" suave. Los buenos cantantes pasan de una a otra suavemente.'} },
+  { k:{en:'First voice (prima voce / primera voz)',es:'Primera voz (prima voce)'}, d:{en:'The main singer who carries the melody, the tune everyone knows. The second and third voices sing different notes that blend with it.',es:'El cantante principal que lleva la melodía, la tonada que todos conocen. La segunda y la tercera voz cantan otras notas que se mezclan con ella.'} },
+  { k:{en:'Melody and harmony',es:'Melodía y armonía'}, d:{en:'Melody is the tune. Harmony is other notes sung at the same time that sound good together with the tune.',es:'La melodía es la tonada. La armonía son otras notas cantadas al mismo tiempo que suenan bien junto a la tonada.'}, demo:[0,4,7] },
+  { k:{en:'Breath support',es:'Apoyo del aire'}, d:{en:'Breathing low into your belly, then letting the air out slowly and steadily. It keeps your notes from shaking or running out.',es:'Respirar hacia la barriga y soltar el aire despacio y parejo. Evita que las notas tiemblen o se acaben.'} },
+  { k:{en:'Warm-up',es:'Calentamiento'}, d:{en:'Easy sounds before singing, like stretching before exercise. It protects your voice and makes singing easier.',es:'Sonidos fáciles antes de cantar, como estirarse antes de hacer ejercicio. Protege tu voz y hace el canto más fácil.'} },
+  { k:{en:'Siren',es:'Sirena'}, d:{en:'Sliding your voice smoothly up and down like an ambulance siren. It loosens the voice and connects low and high notes.',es:'Deslizar tu voz suavemente hacia arriba y abajo como la sirena de una ambulancia. Suelta la voz y une las notas graves con las agudas.'} }
+];
+
+/* ---------- state ---------- */
+const KEY = 'wtpt-v2';
+let S = { lang:'en', name:'', voice:'low', root:48, unsure:false, voiceOn:true, onboardDone:false, tourDone:false, heard:{}, rate:0.92, voiceNames:{en:'', es:''}, progress:{}, warmDone:0, range:null };
+const demo = { on:false, freq:null, t0:0, err0:0, miss:false };
+function load() { try { const j = localStorage.getItem(KEY); if (j) Object.assign(S, JSON.parse(j)); } catch (e) {} if (!S.voiceNames) S.voiceNames = { en:'', es:'' }; if (!S.rate) S.rate = 0.92; }
+function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+const tr = (k, v) => { let s = (TXT[S.lang][k] ?? TXT.en[k] ?? k); if (v) for (const x in v) s = s.replace('{' + x + '}', v[x]); return s; };
+const L = o => o[S.lang] || o.en;
+const $ = (s, r = document) => r.querySelector(s);
+const view = $('#view');
+const P = id => S.progress[id] || (S.progress[id] = { practiceHits:0, practiceDone:false, passed:false, best:0, stars:0 });
+const LV = id => LEVELS.find(l => l.id === id);
+const unlocked = id => id === 1 || P(id - 1).passed;
+const NAMES = { en:['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'], es:['Do','Do#','Re','Re#','Mi','Fa','Fa#','Sol','Sol#','La','La#','Si'] };
+const nn = m => NAMES[S.lang][((Math.round(m) % 12) + 12) % 12];
+const nnOct = m => nn(m) + (Math.floor(Math.round(m) / 12) - 1);
+const tgt = e => typeof e === 'number' ? e : e.t;
+const mel = e => typeof e === 'number' ? e : e.m;
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const pick = a => a[Math.floor(Math.random() * a.length)];
+const randInt = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]));
+
+/* ---------- read aloud ---------- */
+const SYN = ('speechSynthesis' in window) ? window.speechSynthesis : null;
+let speakN = 0, speakGen = 0;
+const normLang = v => (v.lang || '').toLowerCase().replace('_', '-');
+function voiceScore(v) {
+  const n = v.name || '';
+  let sc = 0;
+  if (/natural|neural/i.test(n)) sc += 6;
+  if (/online/i.test(n)) sc += 5;
+  if (/premium|enhanced|siri/i.test(n)) sc += 4;
+  if (/google/i.test(n)) sc += 3;
+  if (/samantha|ava\b|allison|aria|jenny|guy|emma|paulina|monica|elvira|dalia|sabina|paloma|jorge|diego|lupe|karen/i.test(n)) sc += 2;
+  if (/compact|espeak/i.test(n)) sc -= 4;
+  if (/david|zira|mark|hazel|helena|pablo|raul|desktop/i.test(n)) sc -= 2;
+  if (/^(es-us|es-mx|en-us)$/.test(normLang(v))) sc += 1;
+  return sc;
+}
+function voicesFor(lang) {
+  if (!SYN) return [];
+  return SYN.getVoices().filter(v => normLang(v).startsWith(lang)).sort((a, b) => voiceScore(b) - voiceScore(a));
+}
+function pickVoice() {
+  const list = voicesFor(S.lang), chosen = (S.voiceNames || {})[S.lang];
+  return list.find(v => v.name === chosen) || list[0] || null;
+}
+const cleanSpeech = t => String(t).replace(/<[^>]+>/g, ' ').replace(/^\d+\.\s*/, '').replace(/[↑↓✓★☆→←•]/g, ' ').replace(/…/g, '.').replace(/\s+/g, ' ').trim();
+function say(text, force) {
+  return new Promise(resolve => {
+    if (!SYN || (!S.voiceOn && !force)) { resolve(); return; }
+    const txt = cleanSpeech(text);
+    if (!txt) { resolve(); return; }
+    const gen = ++speakGen;
+    try { SYN.cancel(); } catch (e) {}
+    const parts = txt.match(/[^.!?]+[.!?]*/g) || [txt];
+    const voice = pickVoice();
+    let i = 0, finished = false, timer = null;
+    const done = () => {
+      if (finished) return; finished = true; clearTimeout(timer);
+      speakN = Math.max(0, speakN - 1);
+      document.body.classList.toggle('speaking', speakN > 0);
+      resolve();
+    };
+    speakN++; document.body.classList.add('speaking');
+    timer = setTimeout(done, Math.max(4000, txt.length * 95));
+    const next = () => {
+      if (finished) return;
+      if (gen !== speakGen || i >= parts.length) { done(); return; }
+      try {
+        const u = new SpeechSynthesisUtterance(parts[i++].trim());
+        u.lang = S.lang === 'es' ? 'es-US' : 'en-US';
+        if (voice) u.voice = voice;
+        u.rate = S.rate || 0.92; u.pitch = 1;
+        u.onend = () => setTimeout(next, 170); u.onerror = done;
+        SYN.speak(u);
+      } catch (e) { done(); }
+    };
+    setTimeout(next, 70);
+  });
+}
+function stopSpeech() { speakGen++; if (SYN) { try { SYN.cancel(); } catch (e) {} } }
+if (SYN) { try { SYN.getVoices(); SYN.onvoiceschanged = () => { SYN.getVoices(); if (cur && cur.name === 'settings') render(); }; } catch (e) {} }
+
+/* ---------- audio ---------- */
+let AC = null, wave = null, muted = false;
+const activeTones = new Set();
+function audio() {
+  if (!AC) {
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    AC = new Ctx();
+    const real = new Float32Array(8), imag = new Float32Array([0, 1, .5, .33, .2, .12, .07, .04]);
+    wave = AC.createPeriodicWave(real, imag);
+  }
+  if (AC.state === 'suspended') AC.resume();
+  return AC;
+}
+function startTone(freq, vol = 0.25) {
+  const ac = audio();
+  const o = ac.createOscillator();
+  o.setPeriodicWave(wave);
+  o.frequency.value = freq;
+  const g = ac.createGain();
+  g.gain.value = 0;
+  o.connect(g); g.connect(ac.destination);
+  g.gain.linearRampToValueAtTime(vol, ac.currentTime + 0.05);
+  o.start();
+  const h = {
+    osc:o, gain:g,
+    stop() {
+      if (h.done) return; h.done = true; activeTones.delete(h);
+      const n = ac.currentTime;
+      try { g.gain.cancelScheduledValues(n); g.gain.setValueAtTime(g.gain.value, n); g.gain.linearRampToValueAtTime(0, n + 0.08); o.stop(n + 0.1); } catch (e) {}
+    }
+  };
+  activeTones.add(h);
+  return h;
+}
+async function playTone(freq, dur = 1, vol = 0.25) {
+  muted = true;
+  const h = startTone(freq, vol);
+  await sleep(dur * 1000);
+  h.stop();
+  await sleep(220);
+  muted = false;
+}
+async function playSeq(offs, dur, onStep, my) {
+  for (let i = 0; i < offs.length; i++) {
+    if (my !== run) return;
+    if (onStep) onStep(i);
+    await playTone(mtof(S.root + offs[i]), dur);
+  }
+  if (onStep) onStep(-1);
+}
+async function playPair(a, b, my) {
+  await playTone(mtof(a), 0.9); if (my !== run) return;
+  await sleep(150);
+  await playTone(mtof(b), 0.9);
+}
+function stopAll() {
+  run++;
+  stopSpeech();
+  activeTones.forEach(h => h.stop());
+  muted = false;
+  if (answerResolve) { const r = answerResolve; answerResolve = null; r(null); }
+}
+
+/* ---------- microphone ---------- */
+let stream = null, analyser = null, sbuf = null, micOK = false;
+async function startMic() {
+  if (micOK) return true;
+  try {
+    const ac = audio();
+    stream = await navigator.mediaDevices.getUserMedia({ audio:{ echoCancellation:false, noiseSuppression:false, autoGainControl:false } });
+    const src = ac.createMediaStreamSource(stream);
+    analyser = ac.createAnalyser();
+    analyser.fftSize = 4096;
+    src.connect(analyser);
+    sbuf = new Float32Array(analyser.fftSize);
+    micOK = true;
+    return true;
+  } catch (e) { return false; }
+}
+function gauss() { return (Math.random() + Math.random() + Math.random() - 1.5) / 1.5; }
+function readPitch() {
+  if (muted || speakN > 0) return null;
+  if (demo.on) {
+    if (!demo.freq) return null;
+    const el = (performance.now() - demo.t0) / 1000;
+    if (el < 0.9) return null;
+    const err = demo.miss ? demo.err0 : demo.err0 * Math.exp(-(el - 0.9) * 2.5) + gauss() * 7;
+    return demo.freq * Math.pow(2, err / 1200);
+  }
+  if (!micOK) return null;
+  analyser.getFloatTimeDomainData(sbuf);
+  return yin(sbuf, AC.sampleRate);
+}
+function demoTarget(freq, miss) {
+  demo.freq = freq; demo.t0 = performance.now();
+  demo.miss = miss === undefined ? Math.random() < 0.22 : miss;
+  demo.err0 = demo.miss ? (Math.random() < .5 ? -1 : 1) * (130 + Math.random() * 60) : (Math.random() < .5 ? -1 : 1) * (30 + Math.random() * 40);
+}
+async function ensureMic() {
+  if (demo.on) return true;
+  const ok = await startMic();
+  if (!ok) { const b = $('#micbox'); if (b) b.classList.remove('hidden'); }
+  return ok;
+}
+
+/* ---------- meter ---------- */
+function meterHTML() {
+  return `<div class="meter"><div class="zone" id="m-zone"></div><div class="dot" id="m-dot"></div></div>
+  <div class="ends"><span>${tr('tooLow')}</span><span>${tr('tooHigh')}</span></div>
+  <div class="hint" id="m-hint">${tr('hintNone')}</div>
+  <div class="det"><span>${tr('youSing')}: </span><b id="m-det">–</b></div>
+  <div class="holdbar"><i id="m-hold"></i></div>`;
+}
+function updateMeter(err, tol, hf, f) {
+  const dot = $('#m-dot'); if (!dot) return;
+  $('#m-zone').style.width = (2 * tol / 300 * 100) + '%';
+  if (err === null) { dot.style.left = '50%'; dot.style.opacity = '.28'; dot.className = 'dot'; $('#m-hint').textContent = tr('hintNone'); }
+  else {
+    const c = Math.max(-150, Math.min(150, err)), a = Math.abs(err);
+    dot.style.opacity = '1'; dot.style.left = (50 + c / 300 * 100) + '%';
+    dot.className = 'dot ' + (a <= tol ? 'ok' : a <= tol * 2 ? 'near' : 'far');
+    $('#m-hint').textContent = a <= tol ? tr('hintOn') : (err < 0 ? tr('hintLow') + ' ↑' : tr('hintHigh') + ' ↓');
+  }
+  $('#m-det').textContent = f ? nn(Math.round(ftom(f))) : '–';
+  if (hf != null) $('#m-hold').style.width = Math.min(100, hf * 100) + '%';
+}
+
+/* ---------- listening ---------- */
+let run = 0;
+async function listen({ target, tol, hold, timeout, my }) {
+  const tf = mtof(target);
+  if (demo.on) demoTarget(tf * 0.5);
+  let held = 0, off = 0, noneT = 0, hist = [], frames = 0, pitched = 0, inTol = 0;
+  const recent = [];
+  let last = performance.now(); const start = last;
+  const verdict = () => {
+    if (pitched < frames * 0.12) return 'mic';
+    const avg = median(recent);
+    if (Math.abs(avg) <= tol || inTol > pitched * 0.25) return hold > 1 ? 'hold' : 'steady';
+    return avg < 0 ? 'low' : 'high';
+  };
+  for (;;) {
+    await sleep(40);
+    if (my !== run) return { aborted:true };
+    const now = performance.now(), dt = (now - last) / 1000; last = now;
+    const f = readPitch();
+    let err = null, mf = null;
+    frames++;
+    if (f) {
+      hist.push(f); if (hist.length > 5) hist.shift(); mf = median(hist); err = foldCents(mf, tf); noneT = 0;
+      pitched++; recent.push(err); if (recent.length > 25) recent.shift(); if (Math.abs(err) <= tol) inTol++;
+    } else { noneT += dt; if (noneT > 0.25) hist = []; }
+    if (err !== null && Math.abs(err) <= tol) { held += dt; off = 0; } else { off += dt; if (off > 0.45) held = 0; }
+    updateMeter(err, tol, held / hold, mf);
+    if (held >= hold) { demo.freq = null; return { hit:true }; }
+    if ((now - start) / 1000 >= timeout) { demo.freq = null; return { hit:false, kind:verdict() }; }
+  }
+}
+
+/* ---------- effects ---------- */
+function confetti() {
+  const c = document.createElement('div'); c.className = 'confetti';
+  const cols = ['#7c5cff', '#3fa9ff', '#ffc857', '#2ee6a6', '#ff5d73'];
+  for (let i = 0; i < 70; i++) {
+    const p = document.createElement('i');
+    p.style.left = Math.random() * 100 + '%'; p.style.background = cols[i % 5];
+    p.style.animationDuration = (2 + Math.random() * 2.2) + 's'; p.style.animationDelay = (Math.random() * .6) + 's';
+    p.style.transform = `rotate(${Math.random() * 360}deg)`;
+    c.appendChild(p);
+  }
+  document.body.appendChild(c);
+  setTimeout(() => c.remove(), 5400);
+}
+function countUp(el, to, ms = 1100) {
+  if (!el) return;
+  const t0 = performance.now();
+  const step = now => {
+    const k = Math.min(1, (now - t0) / ms), e = 1 - Math.pow(1 - k, 3);
+    el.textContent = Math.round(to * e) + '%';
+    if (k < 1 && document.body.contains(el)) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+const setPhase = p => { const s = $('#stage'); if (!s) return; s.classList.remove('hear', 'sing'); if (p) s.classList.add(p); };
+
+/* ---------- navigation ---------- */
+let cur = { name:'home', args:{} };
+const TABS = [['home', 'home', 'tabHome'], ['levels', 'target', 'tabLevels'], ['warmup', 'flame', 'tabWarm'], ['theory', 'book', 'tabWords'], ['progress', 'star', 'tabProgress']];
+const TABSCREEN = { home:'home', range:'home', levels:'levels', intro:'levels', warmup:'warmup', theory:'theory', progress:'progress', settings:null };
+function go(name, args = {}) { stopAll(); cur = { name, args }; render(); window.scrollTo(0, 0); }
+function render() {
+  document.documentElement.lang = S.lang;
+  document.title = tr('appTitle');
+  $('#brand').textContent = tr('brand');
+  $('#mark').innerHTML = ic('music');
+  const vb = $('#voiceBtn'); vb.innerHTML = ic(S.voiceOn ? 'volume' : 'volumeoff'); vb.classList.toggle('off', !S.voiceOn); vb.setAttribute('aria-label', tr('sRead'));
+  $('#gearBtn').innerHTML = ic('sliders'); $('#gearBtn').setAttribute('aria-label', tr('settings'));
+  document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('on', b.dataset.lang === S.lang));
+  const tabs = $('#tabs'), show = cur.name in TABSCREEN;
+  tabs.classList.toggle('hide', !show);
+  tabs.innerHTML = TABS.map(([go_, icn, lbl]) => `<button data-go="${go_}" class="${TABSCREEN[cur.name] === go_ ? 'on' : ''}">${ic(icn)}<span>${tr(lbl)}</span></button>`).join('');
+  const f = SCREENS[cur.name]; if (f) f(cur.args);
+}
+const backBtn = (to, id) => `<button class="btn ghost small" data-go="${to}" ${id ? `data-id="${id}"` : ''}>${ic('back')} ${tr('back')}</button>`;
+const demoBanner = () => demo.on ? `<div class="demo">${tr('demoBanner')}</div>` : '';
+
+/* ---------- screens ---------- */
+const SCREENS = {};
+
+/* onboarding */
+const OB = ['lang', 'name', 'voice', 'read'];
+SCREENS.onboard = ({ step = 'lang' } = {}) => {
+  const i = OB.indexOf(step);
+  const dots = `<div class="ob-dots">${OB.map((_, k) => `<i class="${k < i ? 'done' : k === i ? 'on' : ''}"></i>`).join('')}</div>`;
+  let body = '', prompt = '';
+  if (step === 'lang') {
+    body = `<h2>Choose your language<br><span class="alt">Elige tu idioma</span></h2>
+      <button class="opt" data-act="pickLang" data-v="en"><b>English</b><small>Continue in English</small></button>
+      <button class="opt" data-act="pickLang" data-v="es"><b>Español</b><small>Continuar en español</small></button>`;
+  } else if (step === 'name') {
+    prompt = tr('qName');
+    body = `<h2>${tr('qName')}</h2><p class="muted">${tr('qNameSub')}</p>
+      <input type="text" id="nm" autocomplete="off" value="${esc(S.name)}" placeholder="${tr('qName')}">
+      <button class="btn primary big" data-act="obName">${tr('next')} ${ic('next')}</button>`;
+  } else if (step === 'voice') {
+    prompt = tr('qVoice');
+    body = `<h2>${tr('qVoice')}</h2>
+      <button class="opt" data-act="obVoice" data-v="low"><b>${tr('voiceLow')}</b><small>${tr('voiceLowSub')}</small></button>
+      <button class="opt" data-act="obVoice" data-v="high"><b>${tr('voiceHigh')}</b><small>${tr('voiceHighSub')}</small></button>
+      <button class="opt" data-act="obVoice" data-v="unsure"><b>${tr('voiceUnsure')}</b><small>${tr('voiceUnsureSub')}</small></button>`;
+  } else {
+    prompt = tr('qRead');
+    body = `<h2>${tr('qRead')}</h2>
+      <button class="opt" data-act="obRead" data-v="yes"><b>${tr('readYes')}</b><small>${tr('readYesSub')}</small></button>
+      <button class="opt" data-act="obRead" data-v="no"><b>${tr('readNo')}</b><small>${tr('readNoSub')}</small></button>`;
+  }
+  view.innerHTML = `<div>${dots}</div><div class="card hero slide">${body}</div>`;
+  if (prompt) say(prompt);
+  if (step === 'name') setTimeout(() => { const n = $('#nm'); if (n) n.focus(); }, 350);
+};
+
+/* tour */
+SCREENS.tour = ({ i = 0, dir = 1 } = {}) => {
+  const s = TOUR[i], last = !!s.last;
+  const dots = `<div class="ob-dots">${TOUR.map((_, k) => `<i class="${k < i ? 'done' : k === i ? 'on' : ''}"></i>`).join('')}</div>`;
+  const demoMeter = s.demo ? `<div class="demo-meter"><div class="meter"><div class="zone" style="width:26%"></div><div class="dot"></div></div><div class="ends"><span>${tr('tooLow')}</span><span>${tr('tooHigh')}</span></div></div>` : '';
+  view.innerHTML = `<div class="runhead"><span class="eyebrow">${i + 1} / ${TOUR.length}</span><button class="btn ghost small" data-act="tourSkip">${tr('skip')}</button></div>
+    <div>${dots}</div>
+    <div class="card hero slide ${dir < 0 ? 'back' : ''}"><div class="tour-ic">${ic(s.icon)}</div>
+      <h2 class="center">${esc(L(s.t))}</h2><p class="tour-body">${esc(L(s.d))}</p>${demoMeter}
+      <div class="row"><button class="btn small" data-act="tourSay" data-i="${i}">${ic('volume')} ${tr('readToMe')}</button></div></div>
+    ${last ? `<button class="btn primary big" data-act="tourEnd" data-to="intro">${tr('tourLast1')} ${ic('next')}</button><button class="btn big" data-act="tourEnd" data-to="range">${tr('tourLast2')}</button>`
+      : `<div class="row">${i > 0 ? `<button class="btn" data-act="tourGo" data-i="${i - 1}" data-dir="-1">${ic('back')} ${tr('tourBack')}</button>` : ''}<button class="btn primary" data-act="tourGo" data-i="${i + 1}" data-dir="1">${tr('next')} ${ic('next')}</button></div>`}`;
+  say(L(s.t) + '. ' + L(s.d));
+};
+
+/* home */
+SCREENS.home = () => {
+  const next = LEVELS.find(l => unlocked(l.id) && !P(l.id).passed) || LEVELS[LEVELS.length - 1];
+  const passed = LEVELS.filter(l => P(l.id).passed).length;
+  view.innerHTML = `${demoBanner()}
+  <div class="greet"><div><p class="eyebrow">${tr('hi')}</p><h1>${esc(S.name || tr('friend'))}</h1><p class="muted">${tr('homeSub', { n:passed })}</p></div>
+    <div class="ringbox"><svg viewBox="0 0 80 80"><circle class="rg-bg" cx="40" cy="40" r="34"/><circle class="rg-fg" id="rgfg" cx="40" cy="40" r="34"/></svg><b>${passed}/10</b></div></div>
+  <button class="cont" data-go="intro" data-id="${next.id}"><span><small>${tr('cont')}</small><b>${tr('level')} ${next.id}: ${esc(L(next.name))}</b></span>${ic('next')}</button>
+  <div class="grid">
+    <button class="tile" data-go="warmup"><span class="chip-ic">${ic('flame')}</span>${tr('warmup')}<small>${tr('tileWarmSub')}</small></button>
+    <button class="tile" data-go="range"><span class="chip-ic">${ic('ruler')}</span>${tr('range')}<small>${tr('tileRangeSub')}</small></button>
+    <button class="tile" data-go="theory"><span class="chip-ic">${ic('book')}</span>${tr('theory')}<small>${tr('tileWordsSub')}</small></button>
+    <button class="tile" data-go="tour"><span class="chip-ic">${ic('gauge')}</span>${tr('tileTour')}<small>${tr('tileTourSub')}</small></button>
+  </div>`;
+  requestAnimationFrame(() => requestAnimationFrame(() => { const r = $('#rgfg'); if (r) r.style.strokeDashoffset = 213.6 * (1 - passed / 10); }));
+};
+
+/* levels */
+SCREENS.levels = () => {
+  view.innerHTML = `<h2>${tr('levels')}</h2>` + LEVELS.map(l => {
+    const p = P(l.id), ok = unlocked(l.id);
+    const kind = l.harmony ? tr('tHarm') : l.type === 'ear' ? tr('tEar') : tr('tSing');
+    return `<button class="lv ${ok ? '' : 'locked'} ${p.passed ? 'passed' : ''}" ${ok ? `data-go="intro" data-id="${l.id}"` : 'disabled'}>
+      <span class="num">${p.passed ? ic('check') : ok ? l.id : ic('lock')}</span><span class="nm">${esc(L(l.name))}<small>${kind}</small></span>${starsHTML(p.stars)}</button>`;
+  }).join('');
+};
+SCREENS.intro = ({ id }) => {
+  const lv = LV(id), p = P(id);
+  const chips = lv.type === 'sing' ? `<div class="chips" id="chips">${lv.notes.map(e => `<span class="chip">${nn(S.root + tgt(e))}</span>`).join('')}</div>` : '';
+  view.innerHTML = `${backBtn('levels')}
+  <div class="card hero"><span class="pill">${tr('level')} ${id}</span><h2 style="margin-top:12px">${esc(L(lv.name))}</h2><p>${esc(L(lv.desc))}</p>${chips}
+    <p class="muted" id="hearmsg" style="margin-top:12px">${lv.harmony ? tr('headphones') : (lv.type === 'sing' ? tr('anyOctave') : '')}</p>
+    <div class="row"><button class="btn small" data-act="readDesc" data-id="${id}">${ic('volume')} ${tr('readToMe')}</button><button class="btn small" data-act="hear" data-id="${id}">${ic('play')} ${tr('hearNotes')}</button></div></div>
+  <div class="card"><h3>${tr('howItWorks')}</h3><div class="how">
+    <div class="st"><i>1</i><span>${tr('step1')}</span></div>
+    <div class="st"><i>2</i><span>${tr('step2')} (${tr('goal')}: ${lv.goal})</span></div>
+    <div class="st"><i>3</i><span>${tr('step3', { pass:lv.pass })}</span></div></div></div>
+  <button class="btn primary big" data-act="start" data-id="${id}" data-mode="practice">${tr('startPractice')} ${ic('next')}</button>
+  <button class="btn gold big" ${p.practiceDone ? '' : 'disabled'} data-act="start" data-id="${id}" data-mode="test">${p.practiceDone ? '' : ic('lock')} ${tr('takeTest')}</button>
+  ${p.practiceDone ? '' : `<p class="muted center">${tr('testLocked')}</p>`}
+  ${p.best ? `<p class="muted center">${tr('best')}: ${p.best}%</p>` : ''}`;
+  say(L(lv.name) + '. ' + L(lv.desc));
+};
+function startLevel(id, mode) { go(LV(id).type === 'ear' ? 'runEar' : 'runSing', { id, mode }); }
+
+/* run screens */
+const instrText = (lv, mode) => mode === 'test' ? tr('testHow', { pass:lv.pass }) : L(lv.how);
+function runShell(lv, mode, inner) {
+  const p = P(lv.id);
+  const stat = mode === 'practice'
+    ? `<div class="statrow"><span>${tr('goal')}</span><span id="stattext">${Math.min(p.practiceHits, lv.goal)}/${lv.goal}</span></div><div class="bar"><i id="statbar" style="width:${Math.min(100, p.practiceHits / lv.goal * 100)}%"></i></div>`
+    : `<div class="statrow"><span>${tr('pTest')}</span><span id="stattext">0/${lv.test}</span></div><div class="bar"><i id="statbar"></i></div>`;
+  view.innerHTML = `${demoBanner()}<div class="runhead"><button class="btn ghost small" data-act="stop" data-id="${lv.id}">${ic('x')} ${tr('stop')}</button>
+    <span class="badge ${mode}">${mode === 'practice' ? tr('pPractice') : tr('pTest')}</span><span class="lvname">${esc(L(lv.name))}</span></div>
+  <div class="card instr"><button class="icbtn" data-act="sayInstr" aria-label="${tr('hearInstr')}">${ic('volume')}</button><div><b>${tr('instrTitle')}</b><br>${esc(instrText(lv, mode))}</div></div>
+  <div class="card stage" id="stage">${inner}</div>${stat}
+  <div id="micbox" class="card hidden"><p>${tr('micProblem')}</p><div class="row"><button class="btn primary" data-act="demoOn">${tr('useDemo')}</button></div></div>
+  <div class="row" id="runbtns"></div>`;
+}
+const flash = ok => { const s = $('#stage'); if (!s) return; s.classList.remove('flash-ok', 'flash-bad'); void s.offsetWidth; s.classList.add(ok ? 'flash-ok' : 'flash-bad'); };
+const setStatus = k => { const e = $('#status'); if (e) e.textContent = tr(k); };
+function bumpPractice(lv, ok) {
+  const p = P(lv.id);
+  if (ok) p.practiceHits++;
+  if (!p.practiceDone && p.practiceHits >= lv.goal) {
+    p.practiceDone = true; setStatus('testUnlocked'); confetti();
+    const b = $('#runbtns'); if (b) b.insertAdjacentHTML('beforeend', `<button class="btn primary" data-act="start" data-id="${lv.id}" data-mode="test">${tr('takeTest')} ${ic('next')}</button>`);
+  }
+  save();
+  const t = $('#stattext'); if (t) t.textContent = Math.min(p.practiceHits, lv.goal) + '/' + lv.goal;
+  const bar = $('#statbar'); if (bar) bar.style.width = Math.min(100, p.practiceHits / lv.goal * 100) + '%';
+}
+function testProgress(done, total, hits) {
+  const t = $('#stattext'); if (t) t.textContent = done + '/' + total + '  ·  ' + hits + ' ✓';
+  const bar = $('#statbar'); if (bar) bar.style.width = (done / total * 100) + '%';
+}
+function finishTest(lv, hits, total) {
+  const pct = Math.round(hits / total * 100), pass = pct >= lv.pass, p = P(lv.id);
+  p.best = Math.max(p.best, pct);
+  if (pass) { p.passed = true; p.stars = Math.max(p.stars, pct === 100 ? 3 : pct >= 90 ? 2 : 1); }
+  save();
+  go('result', { id:lv.id, pct, pass, hits, total });
+}
+async function readInstructions(lv, mode) {
+  if (!S.voiceOn) return;
+  setStatus('hearInstrNow');
+  await say(instrText(lv, mode));
+}
+async function coach(kind, text) {
+  const st = $('#stage'); if (!st) return;
+  const old = st.querySelector('.coach'); if (old) old.remove();
+  const icn = { up:'up', down:'down', mic:'mic' }[kind] || 'target';
+  st.insertAdjacentHTML('beforeend', `<div class="coach ${kind}"><div class="arrow">${ic(icn)}</div><p>${esc(text)}</p></div>`);
+  if (S.voiceOn && SYN) { await say(text); await sleep(450); } else await sleep(2800);
+  const el = st.querySelector('.coach');
+  if (el) { el.classList.add('out'); await sleep(320); el.remove(); }
+}
+
+SCREENS.runSing = ({ id, mode }) => {
+  const lv = LV(id);
+  runShell(lv, mode, `<div class="status" id="status"></div><div class="orb"><div class="core" id="bignote">–</div></div>
+    <div class="dots" id="dots">${lv.notes.map(() => '<i></i>').join('')}</div>${meterHTML()}`);
+  if (mode === 'practice') $('#runbtns').innerHTML = `<button class="btn" data-act="replay">${ic('replay')} ${tr('hearAgain')}</button>` + (P(id).practiceDone ? `<button class="btn primary" data-act="start" data-id="${id}" data-mode="test">${tr('takeTest')} ${ic('next')}</button>` : '');
+  singSession(lv, mode);
+};
+let currentTarget = null;
+async function singSession(lv, mode) {
+  const my = run;
+  if (!(await ensureMic())) return;
+  if (my !== run) return;
+  await readInstructions(lv, mode); if (my !== run) return;
+  const total = mode === 'test' ? lv.test : Infinity;
+  const tol = mode === 'test' ? lv.tol - 10 : lv.tol;
+  const hold = lv.hold || 0.7;
+  let i = 0, hits = 0, tries = 0;
+  while (my === run) {
+    if (tries >= total) break;
+    const e = lv.notes[i % lv.notes.length], idx = i % lv.notes.length; i++;
+    const t = tgt(e), m = mel(e), harm = typeof e !== 'number';
+    currentTarget = { freq:mtof(S.root + (harm ? m : t)) };
+    $('#bignote').textContent = nn(S.root + t);
+    document.querySelectorAll('#dots i').forEach((d, k) => d.classList.toggle('on', k === idx));
+    updateMeter(null, tol, 0, null);
+    setStatus('listen'); setPhase('hear');
+    if (mode === 'practice' && tries < 3) { await say(tr('listen')); if (my !== run) return; }
+    if (harm) {
+      await playTone(mtof(S.root + m), 1.1); if (my !== run) return;
+      if (mode === 'practice') { setStatus('hearHarm'); await sleep(150); await playTone(mtof(S.root + t), 1.1); }
+    } else await playTone(mtof(S.root + t), 1.1);
+    if (my !== run) return;
+    await sleep(100);
+    if (mode === 'practice' && tries < 3) { setStatus('singNow'); await say(tr('singNow')); if (my !== run) return; }
+    const drone = harm ? startTone(mtof(S.root + m), 0.08) : null;
+    setStatus('singNow'); setPhase('sing');
+    const r = await listen({ target:S.root + t, tol, hold, timeout:(mode === 'test' ? 4.5 : 8) + hold, my });
+    if (drone) drone.stop();
+    if (my !== run || r.aborted) return;
+    setPhase(null);
+    tries++; if (r.hit) hits++;
+    if (mode === 'practice') bumpPractice(lv, r.hit); else testProgress(tries, total, hits);
+    flash(r.hit);
+    if (!(mode === 'practice' && P(lv.id).practiceHits === lv.goal && r.hit)) setStatus(r.hit ? 'hit' : 'miss');
+    if (r.hit) await sleep(700);
+    else {
+      const txt = { mic:tr('coachMic'), low:tr('coachLow'), high:tr('coachHigh'), steady:tr('coachSteady'), hold:tr('coachHold') }[r.kind] || tr('miss');
+      await coach(r.kind === 'low' ? 'up' : r.kind === 'high' ? 'down' : r.kind, txt);
+      if (my !== run) return;
+    }
+  }
+  if (my === run && mode === 'test') finishTest(lv, hits, total);
+}
+
+let answerResolve = null, earQ = null;
+const waitAnswer = () => new Promise(r => { answerResolve = r; });
+SCREENS.runEar = ({ id, mode }) => {
+  const lv = LV(id);
+  runShell(lv, mode, `<div class="status" id="status"></div><div class="orb"><div class="core" id="bignote">${ic('headphones')}</div></div>
+    <p class="muted" id="earmsg">${tr('earHear')}</p>
+    <div class="earbtns"><button class="btn" id="bHigh" data-act="ans" data-v="1" disabled>${ic('up')} ${tr('higher')}</button><button class="btn" id="bLow" data-act="ans" data-v="-1" disabled>${ic('down')} ${tr('lower')}</button></div>`);
+  if (mode === 'practice') $('#runbtns').innerHTML = `<button class="btn" data-act="replayEar">${ic('replay')} ${tr('hearAgain')}</button>` + (P(id).practiceDone ? `<button class="btn primary" data-act="start" data-id="${id}" data-mode="test">${tr('takeTest')} ${ic('next')}</button>` : '');
+  earSession(lv, mode);
+};
+const setEarButtons = on => { ['#bHigh', '#bLow'].forEach(s => { const b = $(s); if (b) b.disabled = !on; }); };
+async function earSession(lv, mode) {
+  const my = run; const total = mode === 'test' ? lv.test : Infinity;
+  await readInstructions(lv, mode); if (my !== run) return;
+  let correct = 0, tries = 0;
+  while (my === run) {
+    if (tries >= total) break;
+    const d = pick(mode === 'test' ? [2, 3, 4, 5, 7] : [3, 4, 5, 7]), dir = Math.random() < .5 ? 1 : -1;
+    const a = S.root + randInt(0, 5), b = a + dir * d;
+    earQ = { a, b, dir };
+    setEarButtons(false); setStatus('listen'); setPhase('hear'); $('#earmsg').textContent = tr('earHear');
+    await playPair(a, b, my); if (my !== run) return;
+    setPhase(null); setStatus('earAsk'); setEarButtons(true);
+    const ans = await waitAnswer(); if (my !== run || ans === null) return;
+    setEarButtons(false);
+    tries++; const ok = ans === dir; if (ok) correct++;
+    if (mode === 'practice') bumpPractice(lv, ok); else testProgress(tries, total, correct);
+    flash(ok);
+    if (ok) { $('#earmsg').textContent = tr('correct'); await sleep(800); }
+    else {
+      const txt = tr('earWrong', { dir: dir > 0 ? tr('dirUp') : tr('dirDown') }) + (mode === 'practice' ? ' ' + tr('listenAgain') : '');
+      $('#earmsg').textContent = txt;
+      await coach(dir > 0 ? 'up' : 'down', txt); if (my !== run) return;
+      if (mode === 'practice') { setPhase('hear'); await playPair(a, b, my); setPhase(null); if (my !== run) return; await sleep(400); }
+    }
+  }
+  if (my === run && mode === 'test') finishTest(lv, correct, total);
+}
+
+SCREENS.result = ({ id, pct, pass, hits, total }) => {
+  const lv = LV(id), p = P(id);
+  const next = id < LEVELS.length ? id + 1 : null;
+  view.innerHTML = `<div class="card hero"><div class="big-ic ${pass ? 'good' : ''}">${ic(pass ? 'trophy' : 'replay')}</div>
+    <h2 class="center">${pass ? tr('passed') : tr('notYet')}</h2>
+    <div class="score" id="sc">0%</div><p class="muted center">${hits}/${total} · ${tr('needed', { pass:lv.pass })}</p>${pass ? '' : `<p class="tip">${tr('failTip')}</p>`}
+    ${pass ? `<div class="center" style="margin-top:10px">${starsHTML(p.stars, 'lg')}</div>` : ''}</div>
+    ${pass && next ? `<button class="btn primary big" data-go="intro" data-id="${next}">${tr('nextLevel')} ${ic('next')}</button>` : ''}
+    ${!pass ? `<button class="btn primary big" data-act="start" data-id="${id}" data-mode="test">${tr('tryAgain')}</button>` : ''}
+    <button class="btn big" data-act="start" data-id="${id}" data-mode="practice">${tr('backPractice')}</button>
+    <button class="btn ghost big" data-go="levels">${tr('levels')}</button>`;
+  countUp($('#sc'), pct);
+  if (pass) confetti();
+  say(pass ? tr('passed') : tr('failSay', { pct, pass:lv.pass, tip:tr('failTip') }));
+};
+
+/* warm-up */
+const WARM = ['breathe', 'hum', 'siren', 'scale'];
+SCREENS.warmup = ({ step = 0 } = {}) => {
+  const keys = { breathe:['wBreatheT', 'wBreatheB'], hum:['wHumT', 'wHumB'], siren:['wSirenT', 'wSirenB'], scale:['wScaleT', 'wScaleB'] };
+  if (step >= WARM.length) {
+    S.warmDone++; save();
+    view.innerHTML = `<div class="card hero"><div class="big-ic good">${ic('flame')}</div><h2 class="center">${tr('wDone')}</h2></div>
+      <button class="btn primary big" data-go="levels">${tr('levels')} ${ic('next')}</button><button class="btn ghost big" data-go="home">${tr('back')}</button>`;
+    confetti(); say(tr('wDone'));
+    return;
+  }
+  const k = WARM[step], vis = {
+    breathe:'<div class="breath" id="vis"></div>',
+    hum:`<div class="hum-ic" id="vis">${ic('mic')}</div>`,
+    siren:'<div class="track"><div class="ball" id="vis"></div></div>',
+    scale:`<div class="chips" id="vis" style="justify-content:center">${[0, 2, 4, 5, 7].map(o => `<span class="chip">${nn(S.root + o)}</span>`).join('')}</div>`
+  }[k];
+  view.innerHTML = `<h2>${tr('wTitle')}</h2>
+    <div class="wdots">${WARM.map((_, i) => `<i class="${i < step ? 'done' : i === step ? 'on' : ''}"></i>`).join('')}</div>
+    <div class="card hero slide"><h3>${tr(keys[k][0])}</h3><p>${tr(keys[k][1])}</p>${vis}<div class="status center" id="status"></div></div>
+    <div class="row"><button class="btn primary" id="wgo" data-act="wrun" data-step="${step}">${ic('play')} ${tr('wStart')}</button>
+    <button class="btn" data-act="wnext" data-step="${step}">${step === WARM.length - 1 ? tr('wFinish') : tr('wNext')} ${ic('next')}</button></div>`;
+  say(tr(keys[k][0]) + '. ' + tr(keys[k][1]));
+};
+async function warmRun(step) {
+  stopSpeech();
+  const my = ++run, k = WARM[step], st = m => { const e = $('#status'); if (e) e.textContent = m; };
+  $('#wgo').disabled = true;
+  if (k === 'breathe') {
+    const b = $('#vis');
+    for (let c = 0; c < 3; c++) {
+      st(tr('wIn')); b.classList.add('big'); await sleep(4000); if (my !== run) return;
+      st(tr('wHold')); await sleep(2000); if (my !== run) return;
+      st(tr('wOut')); b.classList.remove('big'); await sleep(4000); if (my !== run) return;
+    }
+  } else if (k === 'hum') {
+    st(tr('wListen')); await playTone(mtof(S.root), 2.5); if (my !== run) return;
+    st(tr('wHum')); const h = $('#vis'); if (h) h.classList.add('pulse');
+    await sleep(10000); if (my !== run) return;
+    if (h) h.classList.remove('pulse');
+  } else if (k === 'siren') {
+    const ac = audio(), h = startTone(mtof(S.root), 0.22), n = ac.currentTime;
+    muted = true;
+    h.osc.frequency.setValueAtTime(mtof(S.root), n);
+    h.osc.frequency.exponentialRampToValueAtTime(mtof(S.root + 12), n + 4);
+    h.osc.frequency.exponentialRampToValueAtTime(mtof(S.root), n + 8);
+    st(tr('wSiren')); const ball = $('#vis');
+    requestAnimationFrame(() => ball.classList.add('up'));
+    await sleep(4000); if (my !== run) return; ball.classList.remove('up');
+    await sleep(4000); h.stop(); muted = false;
+  } else if (k === 'scale') {
+    const chips = document.querySelectorAll('#vis .chip'), seq = [0, 2, 4, 5, 7, 5, 4, 2, 0], idx = [0, 1, 2, 3, 4, 3, 2, 1, 0];
+    st(tr('wListen'));
+    for (let pass = 0; pass < 2; pass++) for (let i = 0; i < seq.length; i++) {
+      if (my !== run) return;
+      chips.forEach((c, j) => c.classList.toggle('on', j === idx[i]));
+      await playTone(mtof(S.root + seq[i]), 0.7);
+    }
+    chips.forEach(c => c.classList.remove('on'));
+  }
+  if (my === run) { st('✓'); const g = $('#wgo'); if (g) g.disabled = false; }
+}
+
+/* range finder */
+SCREENS.range = ({ phase = 'intro', low = null, high = null } = {}) => {
+  if (phase === 'intro') {
+    view.innerHTML = `<div class="card hero"><div class="big-ic">${ic('ruler')}</div><h2 class="center">${tr('rTitle')}</h2><p class="center muted">${tr('rIntro')}</p>
+      ${S.range ? `<p class="muted center">${tr('rResult')}: ${nnOct(S.range.low)} – ${nnOct(S.range.high)}</p>` : ''}</div>
+      <button class="btn primary big" data-act="rstart">${tr('rBegin')} ${ic('next')}</button>`;
+    say(tr('rTitle') + '. ' + tr('rIntro'));
+  } else if (phase === 'low' || phase === 'high') {
+    view.innerHTML = `${demoBanner()}<div class="card stage"><span class="pill">${phase === 'low' ? tr('rLowShort') : tr('rHighShort')}</span>
+      <p style="margin-top:12px">${phase === 'low' ? tr('rLow') : tr('rHigh')}</p><div class="status" id="status">${tr('rListening')}</div>
+      <div class="orb"><div class="core" id="bignote">–</div></div><div class="bar"><i id="rbar"></i></div></div>
+      <div id="micbox" class="card hidden"><p>${tr('micProblem')}</p><div class="row"><button class="btn primary" data-act="demoOn">${tr('useDemo')}</button></div></div>`;
+    rangeCapture(phase, low);
+  } else {
+    const root = Math.max(36, Math.min(60, Math.round((low + (high - low) * 0.25) / 12) * 12));
+    S.range = { low, high }; S.root = root; save();
+    view.innerHTML = `<div class="card hero"><div class="big-ic good">${ic('check')}</div><h2 class="center">${tr('rResult')}</h2>
+      <div class="score" style="font-size:44px">${nnOct(low)} – ${nnOct(high)}</div>
+      <p class="center">${tr('rSaved', { n:nnOct(root) })}</p></div>
+      <button class="btn primary big" data-go="levels">${tr('levels')} ${ic('next')}</button><button class="btn big" data-act="rstart">${tr('rRetry')}</button>`;
+    confetti(); say(tr('rSaved', { n:nnOct(root) }));
+  }
+};
+async function rangeCapture(phase, low) {
+  const my = run;
+  if (!(await ensureMic()) || my !== run) return;
+  await say(phase === 'low' ? tr('rLow') : tr('rHigh')); if (my !== run) return;
+  if (demo.on) { demo.freq = mtof(phase === 'low' ? 43 : 67); demo.t0 = performance.now(); demo.miss = false; demo.err0 = 12; }
+  setPhase('sing');
+  const buf = [], start = performance.now();
+  while (my === run) {
+    await sleep(40);
+    if (my !== run) return;
+    const f = readPitch(), now = performance.now();
+    if (f) buf.push({ t:now, m:ftom(f) });
+    while (buf.length && now - buf[0].t > 1300) buf.shift();
+    const e = $('#bignote'); if (e) e.textContent = f ? nnOct(ftom(f)) : '–';
+    const rb = $('#rbar'); if (rb) rb.style.width = Math.min(100, buf.length / 28 * 100) + '%';
+    if (buf.length >= 28) {
+      const ms = buf.map(x => x.m);
+      if (Math.max(...ms) - Math.min(...ms) < 0.8) {
+        const val = Math.round(median(ms));
+        demo.freq = null;
+        const s = $('#status'); if (s) s.textContent = tr('rGot') + ': ' + nnOct(val) + ' ✓';
+        await sleep(1100); if (my !== run) return;
+        if (phase === 'low') go('range', { phase:'high', low:val }); else go('range', { phase:'done', low:Math.min(low, val - 1), high:val });
+        return;
+      }
+    }
+    if (now - start > 20000) { const s = $('#status'); if (s) s.textContent = tr('rTimeout'); demo.freq = null; setPhase(null); return; }
+  }
+}
+
+SCREENS.theory = () => {
+  view.innerHTML = `<h2>${tr('tTitle')}</h2><p class="muted">${tr('tIntro')}</p>` + THEORY.map((t, i) =>
+    `<details><summary>${esc(L(t.k))}</summary><p>${esc(L(t.d))}</p><div class="row"><button class="btn small" data-act="tsay" data-i="${i}">${ic('volume')} ${tr('tRead')}</button>${t.demo ? `<button class="btn small" data-act="tplay" data-i="${i}">${ic('play')} ${tr('tPlay')}</button>` : ''}</div></details>`).join('');
+};
+SCREENS.progress = () => {
+  const stars = LEVELS.reduce((a, l) => a + P(l.id).stars, 0), passed = LEVELS.filter(l => P(l.id).passed).length;
+  view.innerHTML = `<h2>${tr('progress')}</h2>
+    <div class="grid"><div class="card"><div class="score" style="font-size:40px">${stars}/30</div><p class="muted center">${tr('pStars')}</p></div>
+    <div class="card"><div class="score" style="font-size:40px">${passed}/10</div><p class="muted center">${tr('pLevels')}</p></div></div>
+    <div class="card"><b>${tr('pWarm')}:</b> ${S.warmDone}</div>` +
+    LEVELS.map(l => { const p = P(l.id); return `<div class="lv ${p.passed ? 'passed' : ''}" style="cursor:default"><span class="num">${l.id}</span><span class="nm">${esc(L(l.name))}<small>${p.best ? tr('best') + ': ' + p.best + '%' : '–'}</small></span>${starsHTML(p.stars)}</div>`; }).join('');
+};
+let resetArmed = false;
+SCREENS.settings = () => {
+  view.innerHTML = `<h2>${tr('settings')}</h2>
+  <div class="card"><h3>${tr('sName')}</h3><input type="text" id="nm" value="${esc(S.name)}"></div>
+  <div class="card"><h3>${tr('sLang')}</h3><div class="row"><button class="btn ${S.lang === 'en' ? 'primary' : ''}" data-lang="en">English</button><button class="btn ${S.lang === 'es' ? 'primary' : ''}" data-lang="es">Español</button></div></div>
+  <div class="card"><h3>${tr('sVoice')}</h3>
+    <button class="opt ${S.voice === 'low' ? 'on' : ''}" data-act="setvoice" data-v="low"><b>${tr('voiceLow')}</b><small>${tr('voiceLowSub')}</small></button>
+    <button class="opt ${S.voice === 'high' ? 'on' : ''}" data-act="setvoice" data-v="high"><b>${tr('voiceHigh')}</b><small>${tr('voiceHighSub')}</small></button>
+    <p class="muted">${tr('sStart')}: <b>${nnOct(S.root)}</b></p></div>
+  <div class="card"><h3>${tr('sRead')}</h3><button class="opt ${S.voiceOn ? 'on' : ''}" data-act="voiceToggle"><b>${S.voiceOn ? tr('sOn') : tr('sOff')}</b></button></div>
+  <div class="card"><h3>${tr('sVoicePick')}</h3>
+    <select id="voicesel"><option value="">${tr('sVoiceAuto')}</option>${voicesFor(S.lang).map(v => `<option value="${esc(v.name)}" ${(S.voiceNames[S.lang] === v.name) ? 'selected' : ''}>${voiceScore(v) >= 4 ? '★ ' : ''}${esc(v.name)}</option>`).join('')}</select>
+    <p class="muted" style="margin-top:12px">${tr('sSpeed')}</p><input type="range" id="ratesel" min="0.7" max="1.1" step="0.05" value="${S.rate}">
+    <div class="ends"><span>${tr('sSlow')}</span><span>${tr('sFast')}</span></div>
+    <div class="row"><button class="btn" data-act="prevVoice">${ic('volume')} ${tr('sPreview')}</button></div>
+    <p class="muted">${tr('sVoiceTip')}</p></div>
+  <div class="card"><h3>${tr('sDemo')}</h3><button class="opt ${demo.on ? 'on' : ''}" data-act="demoToggle"><b>${demo.on ? tr('sOn') : tr('sOff')}</b></button></div>
+  <button class="btn big" data-go="tour">${ic('gauge')} ${tr('sTour')}</button>
+  <button class="btn ghost big" data-act="reset">${resetArmed ? tr('sConfirm') : tr('sReset')}</button>`;
+};
+
+/* ---------- events ---------- */
+document.addEventListener('click', ev => {
+  audio();
+  const l = ev.target.closest('[data-lang]');
+  if (l) { S.lang = l.dataset.lang; save(); stopSpeech(); render(); return; }
+  const g = ev.target.closest('[data-go]');
+  if (g && !g.disabled) { go(g.dataset.go, g.dataset.id ? { id:+g.dataset.id } : {}); return; }
+  const a = ev.target.closest('[data-act]');
+  if (!a || a.disabled) return;
+  const d = a.dataset;
+  switch (d.act) {
+    case 'pickLang': S.lang = d.v; save(); go('onboard', { step:'name' }); break;
+    case 'obName': { const n = $('#nm'); S.name = n ? n.value.trim() : ''; save(); go('onboard', { step:'voice' }); break; }
+    case 'obVoice': S.voice = d.v === 'high' ? 'high' : 'low'; S.root = S.voice === 'low' ? 48 : 60; S.unsure = d.v === 'unsure'; save(); go('onboard', { step:'read' }); break;
+    case 'obRead': S.voiceOn = d.v === 'yes'; S.onboardDone = true; save(); go('tour', { i:0 }); break;
+    case 'tourGo': go('tour', { i:+d.i, dir:+d.dir }); break;
+    case 'tourSay': say(L(TOUR[+d.i].t) + '. ' + L(TOUR[+d.i].d), true); break;
+    case 'tourSkip': S.tourDone = true; save(); go('home'); break;
+    case 'tourEnd': S.tourDone = true; save(); if (d.to === 'range') go('range', { phase:'intro' }); else go('intro', { id:1 }); break;
+    case 'voiceToggle': S.voiceOn = !S.voiceOn; save(); if (!S.voiceOn) stopSpeech(); render(); break;
+    case 'setvoice': S.voice = d.v; S.root = d.v === 'low' ? 48 : 60; S.range = null; save(); render(); break;
+    case 'start': startLevel(+d.id, d.mode); break;
+    case 'stop': go('intro', { id:+d.id }); break;
+    case 'readDesc': { const lv = LV(+d.id); say(L(lv.name) + '. ' + L(lv.desc), true); break; }
+    case 'sayInstr': { const lv = LV(cur.args.id); say(instrText(lv, cur.args.mode), true); break; }
+    case 'replay': if (currentTarget) playTone(currentTarget.freq, 1.1); break;
+    case 'replayEar': if (earQ) { const my = run, q = earQ; playPair(q.a, q.b, my); } break;
+    case 'ans': if (answerResolve) { const r = answerResolve; answerResolve = null; r(+d.v); } break;
+    case 'demoOn': demo.on = true; go(cur.name, cur.args); break;
+    case 'demoToggle': demo.on = !demo.on; render(); break;
+    case 'hear': hearLevel(+d.id); break;
+    case 'wrun': warmRun(+d.step); break;
+    case 'wnext': go('warmup', { step:+d.step + 1 }); break;
+    case 'rstart': go('range', { phase:'low' }); break;
+    case 'tsay': { const t = THEORY[+d.i]; say(L(t.k) + '. ' + L(t.d), true); break; }
+    case 'tplay': { stopSpeech(); const my = ++run; playSeq(THEORY[+d.i].demo, 0.6, null, my); break; }
+    case 'prevVoice': say(tr('sPreviewText'), true); break;
+    case 'reset': if (resetArmed) { S.progress = {}; S.warmDone = 0; S.range = null; S.heard = {}; save(); resetArmed = false; go('home'); } else { resetArmed = true; render(); } break;
+  }
+});
+document.addEventListener('input', ev => {
+  if (ev.target.id === 'nm' && cur.name === 'settings') { S.name = ev.target.value; save(); }
+});
+document.addEventListener('change', ev => {
+  if (ev.target.id === 'voicesel') { S.voiceNames[S.lang] = ev.target.value; save(); say(tr('sPreviewText'), true); }
+  if (ev.target.id === 'ratesel') { S.rate = +ev.target.value; save(); say(tr('sPreviewText'), true); }
+});
+document.addEventListener('keydown', ev => {
+  if (ev.key === 'Enter' && ev.target.id === 'nm' && cur.name === 'onboard') { ev.preventDefault(); const b = $('[data-act=obName]'); if (b) b.click(); }
+});
+async function hearLevel(id) {
+  stopSpeech();
+  const lv = LV(id), my = ++run, msg = $('#hearmsg');
+  if (lv.type === 'ear') {
+    msg.textContent = tr('earHigh'); await playPair(S.root, S.root + 5, my); if (my !== run) return;
+    await sleep(600); msg.textContent = tr('earLow'); await playPair(S.root + 5, S.root, my);
+  } else {
+    const chips = document.querySelectorAll('#chips .chip');
+    if (lv.harmony) {
+      for (const e of lv.notes) { if (my !== run) return; await playTone(mtof(S.root + e.m), 0.9); await playTone(mtof(S.root + e.t), 0.9); }
+    } else await playSeq(lv.notes, lv.hold ? 1.2 : 0.7, i => chips.forEach((c, k) => c.classList.toggle('on', k === i)), my);
+  }
+}
+
+/* ---------- start ---------- */
+load();
+go(S.onboardDone ? 'home' : 'onboard');
+</script>
+</body>
+</html>
