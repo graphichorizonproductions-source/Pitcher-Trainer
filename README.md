@@ -1,14 +1,12 @@
 # Worship Team Pitch Trainer
 
-A game-style web app that trains a worship team's pitch and ear, level by level.
+A game-style trainer that teaches worship singers music theory, ear training and singing from zero. English and Spanish.
 
-- 10 levels: learn, practice (mistakes are fine), then a test to unlock the next level
-- Live pitch meter using the microphone (works in the browser, no install)
-- Warm-up mode, range finder, and a plain-language "Learn the Words" section
-- Spoken instructions and spoken coaching when you miss a note
-- English and Spanish
+- 14 levels in 4 sections: What Notes Mean, Steps and Scales, Rhythm/Keys/Steadiness, Your Voice
+- Each level: lesson, 3 practices that get harder (with a "you beat it" popup), then a test with 3 versions (A/B/C)
+- Test mixes questions, listening, rhythm tapping and live singing (pitch detected from the microphone)
+- Recorded natural voice (Kokoro: am_puck for English, em_santa for Spanish) in `audio/`, with browser voice fallback
 
-## Run it
+Host `index.html` and `audio/` together on any static host (HTTPS needed for the microphone).
 
-It is a single file: open `index.html` in a browser, or host it as a static site (Netlify, GitHub Pages).
-The microphone needs `https://` or `localhost`. Use Settings, then Demo mode, to try it without a mic.
+`tools/` holds the source (`src/`), `build.py`, `pack.py` and `gen.py` (voice recording).
