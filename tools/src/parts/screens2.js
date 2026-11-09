@@ -61,7 +61,9 @@ document.addEventListener('click', ev => {
     case 'wrun': warmRun(+d.step); break;
     case 'wnext': go('warmup', { step:+d.step + 1 }); break;
     case 'rstart': go('range', { phase:'low' }); break;
-    case 'rmark': if (RG) RG.mark = true; break;
+    case 'rmark': if (RG && RG.doMark) RG.doMark(); break;
+    case 'rstep': if (RG && RG.step) RG.step(+d.d); break;
+    case 'rplay': if (RG && RG.replay) RG.replay(); break;
     case 'tsay': { const t = THEORY[+d.i]; say(L(t.k) + '. ' + L(t.d), true); break; }
     case 'tplay': { stopSpeech(); const my = ++run; playEvents(THEORY[+d.i].demo, my, null); break; }
     case 'prevVoice': say(tr('sPreviewText'), true); break;
@@ -79,7 +81,7 @@ document.addEventListener('keydown', ev => {
 });
 
 /* ---------- every phrase the app can speak (used to record the voice) ---------- */
-const SPOKEN_TXT = ['listen', 'singNow', 'yourTurn', 'correct', 'notQuite', 'selectAll', 'coachMic', 'coachLow', 'coachHigh', 'coachSteady', 'coachHold', 'beat1', 'beat2', 'beat3', 'passedSay', 'failSay2', 'instrSing', 'instrEcho', 'instrMC', 'instrEar', 'instrTap', 'instrHarm', 'testIntro', 'tapOff', 'wDone', 'qName', 'qVoice', 'qRead', 'rAdult', 'rResultSay', 'rNotExact', 'rRetryNote', 'rFail', 'rSaved', 'sPreviewText', 'wBreatheT', 'wBreatheB', 'wHumT', 'wHumB', 'wSirenT', 'wSirenB', 'wScaleT', 'wScaleB'];
+const SPOKEN_TXT = ['listen', 'singNow', 'yourTurn', 'correct', 'notQuite', 'selectAll', 'coachMic', 'coachLow', 'coachHigh', 'coachSteady', 'coachHold', 'beat1', 'beat2', 'beat3', 'passedSay', 'failSay2', 'instrSing', 'instrEcho', 'instrMC', 'instrEar', 'instrTap', 'instrHarm', 'testIntro', 'tapOff', 'wDone', 'qName', 'qVoice', 'qRead', 'rAdult', 'rResultSay', 'rNotExact', 'rHighErr', 'rSaved', 'sPreviewText', 'wBreatheT', 'wBreatheB', 'wHumT', 'wHumB', 'wSirenT', 'wSirenB', 'wScaleT', 'wScaleB'];
 function allSpeech() {
   const out = [], seen = new Set(), keep = S.lang;
   const add = (pack, text) => { const t = cleanSpeech(text); if (!t) return; const k = S.lang + '|' + t; if (seen.has(k)) return; seen.add(k); out.push({ lang:S.lang, pack:S.lang + '_' + pack, text:t, key:clipKey(S.lang, t) }); };

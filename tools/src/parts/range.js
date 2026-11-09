@@ -25,9 +25,15 @@ SCREENS.range = ({ phase = 'intro' } = {}) => {
     if (!RG) rgNew();
     const n = RSTAGE[phase];
     view.innerHTML = `${demoBanner()}<div class="runhead"><button class="btn ghost small" data-go="range">${ic('x')} ${tr('stop')}</button><span class="badge practice">${n} / 4</span></div>
-      <div class="card stage" id="stage"><h3>${tr('rStage' + n + 'T')}</h3><p class="muted">${tr('rStage' + n)}</p><div class="status" id="status"></div>
-      <div class="orb"><div class="core" id="bignote">–</div></div><p class="center muted">${tr('youSing')}: <b id="sung">–</b></p>
-      <button class="btn primary big" data-act="rmark">${tr(n <= 2 ? (n === 1 ? 'rBtnLow' : 'rBtnHigh') : 'rBtnWork')}</button></div>
+      <div class="card rcard"><h3>${tr('rStage' + n + 'T')}</h3><p class="muted">${tr('rStage' + n)}</p>
+      <div class="rnums"><div><small>${tr('rTarget')}</small><b id="tgt">–</b></div><div><small>${tr('rYou')}</small><b id="sung">–</b></div></div>
+      <div id="kbw"></div>
+      <div class="pmeter"><div class="pz"></div><i id="pdot"></i></div><div class="pends"><span>${tr('tooLow')}</span><span>${tr('tooHigh')}</span></div>
+      <div class="verdict" id="verdict">${tr('rSingNow')}</div>
+      <div class="row rstep"><button class="btn small" data-act="rstep" data-d="-12">−${tr('rOct')}</button><button class="btn" data-act="rstep" data-d="-1">◀ ${tr('rLower')}</button><button class="btn" data-act="rstep" data-d="1">${tr('rHigher')} ▶</button><button class="btn small" data-act="rstep" data-d="12">+${tr('rOct')}</button></div>
+      <button class="btn big" data-act="rplay">${ic('volume')} ${tr('rReplay')}</button>
+      <button class="btn primary big" data-act="rmark">${tr(n === 1 ? 'rBtnLow' : n === 2 ? 'rBtnHigh' : 'rBtnWork')}</button>
+      <p class="muted center">${tr('rHint')}</p></div>
       <div id="micbox" class="card hidden"><p>${tr('micProblem')}</p><div class="row"><button class="btn primary" data-act="demoOn">${tr('useDemo')}</button></div></div>`;
     rangeStage(phase);
   } else {
@@ -45,65 +51,66 @@ SCREENS.range = ({ phase = 'intro' } = {}) => {
   }
 };
 
-async function sampleSung(ms, my, stopOnMark) {
-  const vals = [], t0 = performance.now();
-  while (performance.now() - t0 < ms) {
-    await sleep(40); if (my !== run) return null;
-    if (stopOnMark && RG && RG.mark) break;
-    const f = readPitch();
-    if (f) { vals.push(ftom(f)); const e = $('#sung'); if (e) e.textContent = nnOct(ftom(f)); }
-  }
-  const v = vals.slice(Math.floor(vals.length * 0.35));
-  if (v.length < 10) return null;
-  const m = median(v);
-  if (v.filter(x => Math.abs(x - m) < 1.2).length < v.length * 0.6) return null;
-  return m;
+/* piano window: two octaves + the top C, starting on the C at or below the target */
+function rPiano(t, sungM) {
+  const s0 = Math.floor(t / 12) * 12, whites = [], blacks = [];
+  for (let m = s0; m <= s0 + 24; m++) { if ([0, 2, 4, 5, 7, 9, 11].includes(m % 12)) whites.push(m); else blacks.push(m); }
+  const w = 100 / whites.length, fold = sungM == null ? null : s0 + (((Math.round(sungM) - s0) % 12) + 12) % 12;
+  const cls = m => (m === t ? 'hi ' : '') + (fold !== null && (m === fold || (m === s0 + 24 && fold === s0)) ? 'on' : '');
+  return `<div class="kb rkb">${whites.map((m, i) => `<i class="wk ${cls(m)}" style="left:${(i * w).toFixed(2)}%;width:${w.toFixed(2)}%"><b>${nn(m)}${m % 12 === 0 ? `<small>${Math.floor(m / 12) - 1}</small>` : ''}</b></i>`).join('')}${blacks.map(m => { const i = whites.indexOf(m - 1); return `<i class="bk ${cls(m)}" style="left:${((i + 1) * w - w * 0.3).toFixed(2)}%;width:${(w * 0.6).toFixed(2)}%"></i>`; }).join('')}</div>`;
 }
-const demoSing = p => { if (!demo.on) return; if (p >= 41 && p <= 79) demoTarget(mtof(p), false); else demo.freq = null; demo.t0 = performance.now(); };
+const foldSemi = d => ((((d + 6) % 12) + 12) % 12) - 6;
 
 async function rangeStage(phase) {
-  const my = run;
+  const my = run, n = RSTAGE[phase];
   if (!(await ensureMic()) || my !== run) return;
-  const n = RSTAGE[phase];
-  await say(tr('rStage' + n + 'T') + '. ' + tr('rStage' + n)); if (my !== run) return;
-  RG.mark = false;
-  const dir = (phase === 'low' || phase === 'plow') ? -1 : 1;
-  if (n <= 2) {
-    let p = phase === 'low' ? 69 : Math.round(RG.low + 8), last = null, misses = 0, first = true;
-    for (let steps = 0; steps < 45 && my === run; steps++) {
-      if (RG.mark) break;
-      $('#bignote').textContent = nnOct(p); setStatus('rPlaying'); setPhase('hear');
-      await playTone(mtof(p), 0.9); if (my !== run) return;
-      setStatus('rSingAlong'); setPhase('sing'); demoSing(p);
-      const m = await sampleSung(2300, my, true); if (my !== run) return;
-      demo.freq = null; setPhase(null);
-      const ok = m !== null && (first ? Math.abs((((m - p + 6) % 12) + 12) % 12 - 6) <= 1.3 : Math.abs(m - p) <= 1.5);
-      if (ok) { last = Math.round(m); misses = 0; first = false; setStatus('rGotNote'); await sleep(250); p = last + dir; }
-      else { if (RG.mark) break; misses++; if (misses >= 2) break; setStatus('rRetryNote'); await sleep(900); }
+  const span = (RG.high || 79) - (RG.low || 41);
+  let t = phase === 'low' ? 57 : phase === 'high' ? RG.low + 12 : phase === 'plow' ? RG.low + Math.round(span * 0.6) : RG.low + Math.round(span * 0.3);
+  t = Math.max(24, Math.min(96, t));
+  const hist = []; let lastSeen = 0, sungM = null, playId = 0;
+  const draw = () => { const k = $('#kbw'); if (k) k.innerHTML = rPiano(t, sungM); const e = $('#tgt'); if (e) e.textContent = nnOct(t); };
+  const play = async () => {
+    const id = ++playId;
+    hist.length = 0; sungM = null;
+    activeTones.forEach(h => h.stop()); muted = true;
+    const h = startTone(mtof(t), 0.25); await sleep(1000); h.stop(); await sleep(220);
+    if (id !== playId) return;
+    muted = false; if (my !== run) return;
+    if (demo.on && t >= 29 && t <= 91) demoTarget(mtof(t), false);
+  };
+  RG.step = d => { t = Math.max(24, Math.min(96, t + d)); hist.length = 0; sungM = null; draw(); if (demo.on) demo.freq = null; play(); };
+  RG.replay = () => { if (demo.on) demo.freq = null; play(); };
+  RG.doMark = async () => {
+    const vals = hist.slice(-18); let v = t;
+    if (vals.length >= 6) { const m = median(vals); if (Math.abs(foldSemi(m - t)) <= 1.2) v = t + Math.round((m - t) / 12) * 12; }
+    if (n >= 3) { while (v < RG.low) v += 12; while (v > RG.high) v -= 12; v = Math.max(RG.low, Math.min(RG.high, v)); }
+    if (n === 2 && v < RG.low + 5) { const vd = $('#verdict'); if (vd) { vd.className = 'verdict bad'; vd.textContent = tr('rHighErr'); } say(tr('rHighErr')); return; }
+    playId++; activeTones.forEach(h => h.stop()); muted = false; demo.freq = null;
+    if (n === 1) RG.low = v; else if (n === 2) RG.high = v; else if (n === 3) RG.pLow = v; else RG.pHigh = v;
+    const vd = $('#verdict'); if (vd) { vd.className = 'verdict good'; vd.textContent = tr('rGotNote') + ' ' + nnOct(v); }
+    await sleep(900); if (my !== run) return;
+    if (n === 4) finishRange(); else go('range', { phase:['', 'high', 'plow', 'phigh'][n] });
+  };
+  draw();
+  say(tr('rStage' + n + 'T') + '. ' + tr('rStage' + n)).then(() => { if (my === run) play(); });
+  while (my === run) {
+    await sleep(60); if (my !== run || !$('#sung')) return;
+    const f = readPitch(), now = performance.now();
+    if (f) { hist.push(ftom(f)); if (hist.length > 40) hist.shift(); lastSeen = now; }
+    if (now - lastSeen > 350) { hist.length = 0; }
+    const recent = hist.slice(-6);
+    const nm = recent.length >= 3 ? median(recent) : null;
+    if ((nm === null) !== (sungM === null) || (nm !== null && Math.round(nm) !== Math.round(sungM))) { sungM = nm; draw(); } else sungM = nm;
+    const se = $('#sung'), vd = $('#verdict'), dot = $('#pdot');
+    if (nm === null) { se.textContent = '–'; if (vd && !vd.classList.contains('good') && !vd.classList.contains('bad')) { vd.className = 'verdict'; vd.textContent = tr('rSingNow'); } if (dot) dot.style.opacity = 0; continue; }
+    se.textContent = nnOct(nm);
+    const cents = foldSemi(nm - t) * 100;
+    if (dot) { dot.style.opacity = 1; dot.style.left = (50 + Math.max(-100, Math.min(100, cents)) / 2) + '%'; }
+    if (vd && !vd.classList.contains('good')) {
+      const ok = Math.abs(cents) <= 40;
+      vd.className = 'verdict ' + (ok ? 'ok' : 'warn');
+      vd.textContent = ok ? tr('rOnPitch') : cents < 0 ? tr('rTooLowMsg') : tr('rTooHighMsg');
     }
-    if (my !== run) return;
-    const bad = last === null || (phase === 'high' && last <= RG.low + 3);
-    if (bad) { setStatus('rFail'); setPhase(null); await say(tr('rFail')); return; }
-    RG[phase] = last;
-    setStatus('rGotNote'); await sleep(900); if (my !== run) return;
-    go('range', { phase:phase === 'low' ? 'high' : 'plow' });
-  } else {
-    const span = RG.high - RG.low, end = dir < 0 ? RG.low + 1 : RG.high - 1;
-    let p = Math.round(RG.low + span * (dir < 0 ? 0.62 : 0.3)), edge = end;
-    for (let steps = 0; steps < 45 && my === run; steps++) {
-      $('#bignote').textContent = nnOct(p); setStatus('rPlaying'); setPhase('hear');
-      await playTone(mtof(p), 0.8); if (my !== run) return;
-      setStatus('rSingAlong'); setPhase('sing'); demoSing(p);
-      if (demo.on && ((dir < 0 && p <= RG.low + span * 0.3) || (dir > 0 && p >= RG.low + span * 0.72))) RG.mark = true;
-      await sampleSung(2000, my, true); if (my !== run) return;
-      demo.freq = null; setPhase(null);
-      if (RG.mark) { edge = p; break; }
-      if ((dir < 0 && p <= end) || (dir > 0 && p >= end)) { edge = end; break; }
-      p += dir;
-    }
-    if (my !== run) return;
-    RG[phase === 'plow' ? 'pLow' : 'pHigh'] = edge; setStatus('rGotNote'); await sleep(800); if (my !== run) return;
-    if (phase === 'plow') go('range', { phase:'phigh' }); else finishRange();
   }
 }
 function finishRange() {

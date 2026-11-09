@@ -83,3 +83,26 @@ Object.assign(TXT.es, {
   rResultSay:'Aquí está el mapa de tu voz. La barra azul es todo tu rango. La barra dorada es tu punto ideal, tu prima voce. Estas notas son donde mejor suenas y te sientes, así que tus ejercicios empezarán ahí.',
   rNotExact:'Esto no es una ciencia exacta. Cada voz es única, y tu tipo de voz puede cambiar con el entrenamiento, con la edad e incluso de un día a otro. Vuelve a hacer la prueba en unas semanas.'
 });
+
+Object.assign(TXT.en, {
+  rIntro:'This takes about five minutes. You will find four notes: your lowest note, your highest note, and the two edges of your sweet spot, called your prima voce. You stay in control. The app plays a note, shows it on the piano, and shows you live whether you are singing it. You tap the button to mark each note yourself. Then the app tells you your voice type. Sing on a relaxed ah, and never strain.',
+  rStage1:'Listen to the note, then sing it on ah, in whatever octave is comfortable. Watch the piano and the meter to see if you are on the note. Tap Lower to go down one tiny step at a time. When you cannot make a clear sound any more, go back to the last note you could sing, and tap the button to mark it as your lowest.',
+  rStage2:'Listen to the note, then sing it on ah. Let your voice flip into a light, airy falsetto if it wants to. Tap Higher to go up one tiny step at a time. When you cannot make a clear sound any more, go back to the last note you could sing, and tap the button to mark it as your highest.',
+  rStage3:'Now we find the low edge of your sweet spot. Start high, and tap Lower to step down. The notes feel easy at first. When your voice starts to work harder to make the sound, tap the button to mark that note. Listen with your body, not only your ears.',
+  rStage4:'Last one. Start low, and tap Higher to step up. When your voice starts to work harder, with more effort or squeeze, tap the button to mark that note.',
+  rTarget:'Note to sing', rYou:'You sing', rOnPitch:'On pitch! Great.', rTooLowMsg:'A little low. Aim a bit higher.', rTooHighMsg:'A little high. Aim a bit lower.', rSingNow:'Listen, then sing the note on ah.',
+  rLower:'Lower', rHigher:'Higher', rOct:'octave', rReplay:'Play the note again',
+  rHint:'Any octave is fine. Can not reach the next note? Go back to the last one you could sing and mark it.',
+  rHighErr:'Your highest note has to be higher than your lowest. Step up and try again.'
+});
+Object.assign(TXT.es, {
+  rIntro:'Esto toma unos cinco minutos. Vas a encontrar cuatro notas: tu nota más grave, tu nota más aguda, y los dos bordes de tu punto ideal, llamado tu prima voce. Tú tienes el control. La app toca una nota, la muestra en el piano, y te muestra en vivo si la estás cantando. Tú tocas el botón para marcar cada nota. Luego la app te dice tu tipo de voz. Canta con una a relajada, y nunca te esfuerces.',
+  rStage1:'Escucha la nota y luego cántala con a, en la octava que te sea cómoda. Mira el piano y el medidor para ver si estás en la nota. Toca Más grave para bajar un pasito a la vez. Cuando ya no puedas hacer un sonido claro, regresa a la última nota que pudiste cantar y toca el botón para marcarla como tu más grave.',
+  rStage2:'Escucha la nota y luego cántala con a. Deja que tu voz pase a un falsete ligero si quiere. Toca Más aguda para subir un pasito a la vez. Cuando ya no puedas hacer un sonido claro, regresa a la última nota que pudiste cantar y toca el botón para marcarla como tu más aguda.',
+  rStage3:'Ahora encontramos el borde grave de tu punto ideal. Empieza arriba y toca Más grave para bajar. Las notas se sienten fáciles al principio. Cuando tu voz empiece a trabajar más para hacer el sonido, toca el botón para marcar esa nota. Escucha con tu cuerpo, no solo con tus oídos.',
+  rStage4:'La última. Empieza abajo y toca Más aguda para subir. Cuando tu voz empiece a trabajar más, con más esfuerzo o presión, toca el botón para marcar esa nota.',
+  rTarget:'Nota a cantar', rYou:'Tú cantas', rOnPitch:'¡En tono! Muy bien.', rTooLowMsg:'Un poco grave. Apunta un poco más alto.', rTooHighMsg:'Un poco agudo. Apunta un poco más bajo.', rSingNow:'Escucha y luego canta la nota con a.',
+  rLower:'Más grave', rHigher:'Más aguda', rOct:'octava', rReplay:'Tocar la nota otra vez',
+  rHint:'Cualquier octava sirve. ¿No llegas a la siguiente nota? Regresa a la última que pudiste cantar y márcala.',
+  rHighErr:'Tu nota más aguda tiene que ser más alta que la más grave. Sube un poco e inténtalo otra vez.'
+});
